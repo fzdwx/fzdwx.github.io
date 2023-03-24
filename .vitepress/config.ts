@@ -28,7 +28,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/fzdwx/vitepress-blog-theme" },
+      { icon: "github", link: "https://github.com/fzdwx/fzdwx.github.io" },
     ],
   },
 });
