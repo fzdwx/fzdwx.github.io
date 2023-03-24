@@ -15,7 +15,6 @@
     "types": ["vite/client", "node"],
     "paths": {
       "@/*": ["./src/*"],
-      "preact/*": ["./.vitepress/theme/empty.d.ts"]
     }
   },
   "include": [

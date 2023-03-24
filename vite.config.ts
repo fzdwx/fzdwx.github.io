@@ -15,6 +15,20 @@ export default defineConfig({
       "@/": `${resolve(__dirname, "src")}/`,
     },
   },
+  build: {
+    rollupOptions: {
+      // external: (
+      //   source: string,
+      //   importer: string | undefined,
+      //   isResolved: boolean
+      // ) => {
+      //   if (source.includes("README.md")) {
+      //     return false;
+      //   }
+      //   return true;
+      // },
+    },
+  },
   plugins: [
     Icons(),
     // https://github.com/antfu/unplugin-auto-import

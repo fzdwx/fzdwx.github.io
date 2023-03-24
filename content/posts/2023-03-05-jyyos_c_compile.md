@@ -88,7 +88,7 @@ gcc 12.2.1
 
 最后只能曲线救国,在 docker 中 build, 然后在本机跑 qemu (docker 中不方便按图形化界面)
 
-```Dockerfile
+```shell
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update

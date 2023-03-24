@@ -5,7 +5,6 @@ tags: ["linux"]
 layout: post
 ---
 
-
 以 Archlinux 为例子
 
 ```shell
@@ -20,5 +19,4 @@ bluetoothctl connect xxx
 pavucontrol
 ```
 
-
-![设置 蓝牙为默认输出](/images/Pasted%20image%2020230209125317.png)
+![设置 蓝牙为默认输出](/images/20230209125317.png)
