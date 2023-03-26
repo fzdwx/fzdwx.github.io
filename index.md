@@ -7,4 +7,7 @@ title: Whoa flying man
 
 # Whoa flying man
 
-Hello, this is my website .
+Welcome to my website! I'm fzdwx, a programmer from China.
+
+- [GitHub](https://github.com/fzdwx)
+- Email: likelovec@gmail.com
