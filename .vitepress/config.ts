@@ -11,7 +11,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     editLink: {
       text: "✍",
       pattern: (path) => {
-        return `https://github.com/fzdwx/vitepress-blog-theme/blob/main/${path}`;
+        return `https://github.com/fzdwx/fzdwx.github.io/blob/main/${path}`;
       },
     },
     // https://vitepress.dev/reference/default-theme-config
@@ -32,7 +32,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/fzdwx/vitepress-blog-theme" },
+      { icon: "github", link: "https://github.com/fzdwx/fzdwx.github.io" },
     ],
   },
 });
