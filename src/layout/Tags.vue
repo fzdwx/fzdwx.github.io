@@ -23,13 +23,9 @@ const state = ref<{
 });
 
 const refreshTags = async () => {
-  state.value.allPages.forEach((page) => {
-    if (page.frontmatter.tags) {
-      page.frontmatter.tags.forEach((tag: string) => {
-        state.value.tags.add(tag);
-      });
-    }
-  });
+  state.value.tags = new Set<string>(
+    state.value.allPages.map((page) => page.frontmatter.tags).flat()
+  );
 };
 
 const refreshCurrentPages = async (tag: string) => {
@@ -55,8 +51,14 @@ const resetTag = (tag: string) => {
 const route = useRouter();
 route.onAfterRouteChanged = (to: string) => {
   const { layout, tag } = useUrlSearchParams<Record<string, string>>();
-  resetTag(tag);
-  state.value.layout = layout;
+  state.value.tag = tag;
+  if (layout !== state.value.layout) {
+    state.value.layout = layout;
+    state.value.allPages = getPages(layout);
+    refresh(tag);
+  } else {
+    resetTag(tag);
+  }
 };
 
 const { frontmatter } = useData();
@@ -68,22 +70,24 @@ refresh(state.value.tag);
   <div class="Tags">
     <main>
       <header class="ml-10 md:ml-8">
-        <h1>{{ frontmatter.layoutTitleMap[state.layout] }}</h1>
+        <h1>
+          {{ frontmatter.layoutTitleMap[state.layout] }}
+          <span v-if="state.tag">:</span>
+          <span class="pl-3 text-2xl">{{ state.tag }}</span>
+        </h1>
       </header>
-      <nav class="ml-10 md:ml-8">
-        <ul class="">
-          <a
-            v-for="tag in state.tags"
-            :href="tagsUrl(state.layout, tag)"
-            @click="resetTag(tag)"
-            class="tag"
-            :class="{ 'text-cyna-3': tag === state.tag }"
-            >{{ tag }}</a
-          >
-        </ul>
+      <nav class="tag-list ml-10 md:ml-8 main-content">
+        <a
+          v-for="tag in state.tags"
+          :href="tagsUrl(state.layout, tag)"
+          @click="resetTag(tag)"
+          :class="{ 'text-cyna-3': tag === state.tag }"
+          class="tag"
+          >{{ tag }}</a
+        >
       </nav>
       <div class="tags-content">
-        <div class="container">
+        <div class="page-item-container">
           <div class="main">
             <PageList :pages="state.currentPages" />
           </div>
@@ -103,6 +107,7 @@ refresh(state.value.tag);
   @apply px-4 py-2 mx-4 my-1;
   @apply bg-slate-300/30 dark:bg-slate-700/70 rounded-lg text-sm;
   @apply hover:text-cyna-3;
+  display: inline-block;
 }
 
 .icon {
@@ -130,7 +135,7 @@ refresh(state.value.tag);
   }
 }
 
-.container {
+.page-item-container {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -138,7 +143,7 @@ refresh(state.value.tag);
 }
 
 @media (min-width: 960px) {
-  .container {
+  .page-item-container {
     flex-direction: row;
   }
 }

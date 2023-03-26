@@ -1,4 +1,4 @@
-import { ThemeConfig } from "@/utils/config.type";
+import { ThemeConfig } from "@/index";
 import { defineConfigWithTheme } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
@@ -24,11 +24,15 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: "Notes",
         link: "/tags?layout=issue",
       },
+      {
+        text: "Docs",
+        link: "/tags?layout=doc",
+      },
       { text: "Tags", link: "/tags?layout=post", activeMatch: "" },
     ],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/fzdwx/fzdwx.github.io" },
+      { icon: "github", link: "https://github.com/fzdwx/vitepress-blog-theme" },
     ],
   },
 });

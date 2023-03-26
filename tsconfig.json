@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "jsx": "preserve",
     "lib": ["ESNext", "DOM", "DOM.Iterable", "webworker"],
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -15,6 +16,7 @@
     "types": ["vite/client", "node"],
     "paths": {
       "@/*": ["./src/*"],
+      "preact/*": ["./.vitepress/theme/empty.d.ts"]
     }
   },
   "include": [
@@ -22,6 +24,7 @@
     ".vitepress/**/*.d.ts",
     ".vitepress/**/*.vue",
     "src/**/*.ts",
+    "src/**/*.tsx",
     "src/**/*.d.ts",
     "src/**/*.vue",
     "auto-imports.d.ts",

@@ -2,15 +2,157 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"strings"
 	"text/template"
 	"time"
 
 	"github.com/google/go-github/v50/github"
+	cp "github.com/otiai10/copy"
+	"github.com/spf13/cobra"
 	"golang.org/x/oauth2"
 )
+
+var (
+	includeDir = []string{
+		"src", "main.go", "go.mod", "go.sum",
+		"vite.config.ts",
+	}
+	excludeDir = []string{
+		".git", "justfile", "README.md",
+	}
+	version = "0.2.0"
+)
+
+func main() {
+	cmd := root()
+	cmd.AddCommand(sync())    // sync issue
+	cmd.AddCommand(update())  // update theme
+	cmd.AddCommand(newSite()) // new site
+	cmd.AddCommand(versionCmd())
+	cmd.AddCommand(logCmd())
+
+	cmd.Execute()
+}
+
+func root() *cobra.Command {
+	return &cobra.Command{
+		Use:     "bang",
+		Version: version,
+		Short:   "vitepress-blog-theme 的辅助工具",
+	}
+}
+
+func sync() *cobra.Command {
+	return &cobra.Command{
+		Use:   "sync",
+		Short: "同步 issue 到本地的 /content/issues 目录",
+		Run: func(_ *cobra.Command, _ []string) {
+			issues_gh, _, err := client.Issues.ListByRepo(ctx, username, repo, &github.IssueListByRepoOptions{})
+			if err != nil {
+				perr("list issue by repo", err)
+				return
+			}
+
+			var issues []Issue
+			for i := range issues_gh {
+				issues = append(issues, *mapissues(issues_gh[i]))
+			}
+
+			makeTemplate(issues)
+		},
+	}
+}
+
+func update() *cobra.Command {
+	return &cobra.Command{
+		Use:   "update",
+		Short: `更新 vitepress-blog-theme`,
+		Run: func(_ *cobra.Command, _ []string) {
+			dir := "../vitepress-blog-theme-" + time.Now().Format("20060102")
+			os.RemoveAll(dir)
+
+			// clone repo
+			cmd := exec.Command("git", "clone", "--depth=1", "https://github.com/fzdwx/vitepress-blog-theme.git", dir)
+			cmd.Stderr = os.Stderr
+			if err := cmd.Run(); err != nil {
+				perr("clone repo", err)
+				os.RemoveAll(dir)
+				return
+			}
+
+			// copy file
+			for i := range includeDir {
+				path := includeDir[i]
+				err := cp.Copy(filepath.Join(dir, path), path)
+				if err != nil {
+					perr("copy file", err)
+					return
+				}
+			}
+
+			cmpDep(dir)
+		},
+	}
+}
+
+func newSite() *cobra.Command {
+	return &cobra.Command{
+		Use:   "new",
+		Short: `创建新的 vitepress-blog-theme 项目`,
+		Run: func(_ *cobra.Command, _ []string) {
+			cmd := exec.Command("git", "clone", "--depth=1", "https://github.com/fzdwx/vitepress-blog-theme.git")
+			cmd.Stderr = os.Stderr
+			if err := cmd.Run(); err != nil {
+				perr("clone repo", err)
+				return
+			}
+
+			for i := range excludeDir {
+				path := excludeDir[i]
+				err := os.RemoveAll("./vitepress-blog-theme/" + path)
+				if err != nil {
+					perr("rm file", err)
+					return
+				}
+			}
+
+			fmt.Println("创建成功，请执行 cd vitepress-blog-theme && pnpm i && pnpm dev")
+		},
+	}
+}
+
+func versionCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "version",
+		Short: "bang version",
+		Run: func(_ *cobra.Command, _ []string) {
+			fmt.Printf("vbang%s", version)
+		},
+	}
+}
+
+func logCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "log",
+		Short: "bang log",
+		Run: func(_ *cobra.Command, _ []string) {
+			log := `# bang
+
+vitepress-blog-theme 的辅助工具
+
+## v0.1.1
+
+1. 支持同步 issue 到本地的 /content/issues 目录, 需要设置环境变量 ` + "`token`" + `以及  ` + "`repo`" + `
+2. 支持更新 vitepress-blog-theme`
+			fmt.Println(log)
+		},
+	}
+}
 
 var (
 	client        *github.Client
@@ -19,6 +161,8 @@ var (
 	username      string
 	hourOffset    = 8 * time.Hour
 	issueTemplate = `---
+# generated don't edit this file !!!
+# 自动化生成，不要编辑这个文件！！！
 title: "{{ .Title}}"
 layout: "issue"
 date: {{ .CreateAt }}
@@ -44,7 +188,6 @@ func init() {
 	repo = os.Getenv("repo")
 	if repo == "" {
 		repo = "vitepress-blog-theme"
-		fmt.Println("Warning: no repo env var, using default:", repo)
 	}
 
 	ctx := context.Background()
@@ -61,21 +204,6 @@ func init() {
 		return
 	}
 	username = users.GetLogin()
-}
-
-func main() {
-	issues_gh, _, err := client.Issues.ListByRepo(ctx, username, repo, &github.IssueListByRepoOptions{})
-	if err != nil {
-		perr("list issue by repo", err)
-		return
-	}
-
-	var issues []Issue
-	for i := range issues_gh {
-		issues = append(issues, *mapissues(issues_gh[i]))
-	}
-
-	makeTemplate(issues)
 }
 
 func makeTemplate(issues []Issue) {
@@ -101,6 +229,88 @@ func makeTemplate(issues []Issue) {
 		}
 		f.Close()
 		fmt.Println("Issue", issues[i].Number, "created")
+	}
+}
+
+type Package struct {
+	Dependencies    map[string]string `json:"dependencies"`
+	DevDependencies map[string]string `json:"devDependencies"`
+}
+
+func cmpDep(dir string) {
+	// 读取第一个 package.json 文件
+	path := filepath.Join(dir, "package.json")
+	firstFile, err := os.Open(path)
+	if err != nil {
+		perr("open "+path, err)
+		return
+	}
+	defer firstFile.Close()
+
+	var firstPackage = Package{}
+	// 解析第一个文件的依赖列表
+	if err := json.NewDecoder(firstFile).Decode(&firstPackage); err != nil {
+		perr("decode "+path, err)
+		return
+	}
+
+	// 读取第二个 package.json 文件
+	secondFile, err := os.Open("./package.json")
+	if err != nil {
+		perr("open "+"./package.json", err)
+		return
+	}
+	defer secondFile.Close()
+
+	var secondPackage = Package{}
+
+	// 解析第二个文件的依赖列表
+	if err := json.NewDecoder(secondFile).Decode(&secondPackage); err != nil {
+		perr("decode "+"./package.json", err)
+	}
+
+	var dep = []string{}
+	var devDep = []string{}
+	var updateDep = []string{}
+	for dependency, fversion := range firstPackage.Dependencies {
+		if sVersion, ok := secondPackage.Dependencies[dependency]; !ok {
+			dep = append(dep, dependency)
+			if sVersion != fversion {
+				updateDep = append(updateDep, dependency)
+			}
+		}
+	}
+	for dependency, fVersion := range firstPackage.DevDependencies {
+		if sVersion, ok := secondPackage.DevDependencies[dependency]; !ok {
+			devDep = append(devDep, dependency)
+			if sVersion != fVersion {
+				updateDep = append(updateDep, dependency)
+			}
+		}
+	}
+
+	if len(dep) > 0 {
+		for i := range dep {
+			cmd := exec.Command("pnpm", "add", dep[i])
+			cmd.Stderr = os.Stderr
+			cmd.Run()
+		}
+		fmt.Println("new dependencies:", strings.Join(dep, " "))
+	}
+	if len(devDep) > 0 {
+		for i := range devDep {
+			cmd := exec.Command("pnpm", "add", "-D", devDep[i])
+			cmd.Stderr = os.Stderr
+			cmd.Run()
+		}
+		fmt.Println("new dev dependencies:", strings.Join(devDep, " "))
+	}
+
+	if len(updateDep) > 0 {
+		cmd := exec.Command("pnpm", "update", "--latest")
+		cmd.Stderr = os.Stderr
+		cmd.Run()
+		fmt.Println("update dependencies:", strings.Join(updateDep, " "))
 	}
 }
 

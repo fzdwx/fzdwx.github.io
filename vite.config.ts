@@ -2,6 +2,7 @@ import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 
 import { defineConfig } from "vite";
 import { resolve } from "path";
@@ -15,21 +16,12 @@ export default defineConfig({
       "@/": `${resolve(__dirname, "src")}/`,
     },
   },
-  build: {
-    rollupOptions: {
-      // external: (
-      //   source: string,
-      //   importer: string | undefined,
-      //   isResolved: boolean
-      // ) => {
-      //   if (source.includes("README.md")) {
-      //     return false;
-      //   }
-      //   return true;
-      // },
-    },
+  esbuild: {
+    jsxFactory: "h",
+    jsxFragment: "Fragment",
   },
   plugins: [
+    vueJsx({}),
     Icons(),
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({

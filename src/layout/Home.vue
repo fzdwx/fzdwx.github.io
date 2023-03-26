@@ -1,24 +1,18 @@
 <script setup lang="ts">
-import { useData, useRouter } from "vitepress";
 import { posts } from "../utils/core";
 
 import PageList from "./../components/PageList.vue";
-
-const { page, frontmatter, site } = useData();
-
-const router = useRouter();
 </script>
 
 <template>
   <div class="Home">
-    <main class="main">
-      <div class="home-content">
-        <div class="container">
-          <div class="main">
-            <PageList :pages="posts" />
-          </div>
-        </div>
-      </div>
+    <main class="home-content">
+      <article class="main-content">
+        <Content
+          class="home-intro vp-doc prose dark:prose-invert max-w-[800px] mr-20 ml-20 pb-8"
+        />
+      </article>
+      <PageList :pages="posts" />
     </main>
   </div>
 </template>
