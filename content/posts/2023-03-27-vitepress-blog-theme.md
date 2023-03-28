@@ -5,7 +5,7 @@ layout: "post"
 tags: [project, front]
 ---
 
-> 这是这两天写的一个 `vitepress` 主题, 用来替换掉 `hugo` 的主题. 原本的[博客存档](https://github.com/fzdwx/blog-history)
+> 这两天写了一个 `vitepress` blog 主题, 用来替换掉 `hugo`, 原本的[博客存档](https://github.com/fzdwx/blog-history)
 
 在功能上尽可能的和原本的主题一致,比如说:
 
@@ -23,8 +23,6 @@ tags: [project, front]
 2. 同步 issue: `bang sync`
 3. 创建 page: `bang new`
 4. 同步主题: `bang update`
-
-遇到的主要问题就是 `css` 写的不够好(手机端的适配近乎于无), 这还是托了 tailwindcss 的福...欢迎大佬帮忙改进 !
 
 ---
 
