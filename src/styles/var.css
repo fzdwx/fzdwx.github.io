@@ -141,15 +141,15 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
-  --vp-custom-block-tip-text: var(--vp-c-brand-darker);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  --vp-custom-block-tip-border: rgba(66, 184, 131, 0.5);
+  --vp-custom-block-tip-text: #155f3e;
+  --vp-custom-block-tip-bg: rgba(66, 184, 131, 0.05);
 }
 
 .dark {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
-  --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  --vp-custom-block-tip-border: rgba(66, 184, 131, 0.5);
+  --vp-custom-block-tip-text: #155f3e;
+  --vp-custom-block-tip-bg: rgba(66, 184, 131, 0.05);
 }
 
 /**

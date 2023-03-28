@@ -28,10 +28,6 @@ header > h1 {
   transition: color 0.25s, opacity 0.25s;
 }
 
-.props-content p {
-  @apply my-[0.5em];
-}
-
 .props-content h1,
 .props-content h2,
 .props-content h3,
