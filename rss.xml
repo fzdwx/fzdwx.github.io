@@ -4,7 +4,7 @@
         <title>fzdwx</title>
         <link>https://fzdwx.github.io</link>
         <description>What your say ?</description>
-        <lastBuildDate>Tue, 28 Mar 2023 08:51:59 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 28 Mar 2023 10:57:17 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-US</language>
@@ -77,36 +77,6 @@
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[今天星期几]]></title>
-            <link>https://fzdwx.github.io/content/issues/2.html</link>
-            <guid>https://fzdwx.github.io/content/issues/2.html</guid>
-            <pubDate>Fri, 24 Mar 2023 14:36:44 GMT</pubDate>
-            <content:encoded><![CDATA[<h1 id="星期五" tabindex="-1">星期五 <a class="header-anchor" href="#星期五" aria-label="Permalink to &quot;星期五&quot;">&ZeroWidthSpace;</a></h1>
-<blockquote>
-<p>123123123</p>
-</blockquote>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[这是测试 小记]]></title>
-            <link>https://fzdwx.github.io/content/issues/1.html</link>
-            <guid>https://fzdwx.github.io/content/issues/1.html</guid>
-            <pubDate>Fri, 24 Mar 2023 14:31:06 GMT</pubDate>
-            <content:encoded><![CDATA[<p>啊啊啊啊啊啊啊啊啊，测试</p>
-<h2 id="asdasdasd" tabindex="-1">asdasdasd <a class="header-anchor" href="#asdasdasd" aria-label="Permalink to &quot;asdasdasd&quot;">&ZeroWidthSpace;</a></h2>
-<blockquote>
-<p>123123123123</p>
-</blockquote>
-<p>aaaaaaaaaaaaaaaaaaa</p>
-<p>bbbbb</p>
-<p>cccc
-222</p>
-<p>dddd123123</p>
-<p>xxxxxxxxxxxxx
-yyyy</p>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[浏览器字体加重不生效]]></title>
             <link>https://fzdwx.github.io/content/posts/2023-03-22-web-font.html</link>
             <guid>https://fzdwx.github.io/content/posts/2023-03-22-web-font.html</guid>
@@ -132,7 +102,7 @@ yyyy</p>
             <content:encoded><![CDATA[<blockquote>
 <p>最近也是又追起了南京大学的操作系统课(前面几次都中途放弃了),记录一下</p>
 </blockquote>
-<h3 id="_1-首先就是编译第三节课的一个demo时-找不到-ld-等命令" tabindex="-1">1. 首先就是编译第三节课的一个demo时,找不到 ld 等命令 <a class="header-anchor" href="#_1-首先就是编译第三节课的一个demo时-找不到-ld-等命令" aria-label="Permalink to &quot;1. 首先就是编译第三节课的一个demo时,找不到 ld 等命令&quot;">&ZeroWidthSpace;</a></h3>
+<h3 id="_1-首先就是编译第三节课的一个-demo-时-找不到-ld-等命令" tabindex="-1">1. 首先就是编译第三节课的一个 demo 时,找不到 ld 等命令 <a class="header-anchor" href="#_1-首先就是编译第三节课的一个-demo-时-找不到-ld-等命令" aria-label="Permalink to &quot;1. 首先就是编译第三节课的一个 demo 时,找不到 ld 等命令&quot;">&ZeroWidthSpace;</a></h3>
 <blockquote>
 <p><a href="http://jyywiki.cn/OS/2023/build/lect3.ipynb" target="_blank" rel="noreferrer">http://jyywiki.cn/OS/2023/build/lect3.ipynb</a> demo('hello-os', 'i/hello-os')</p>
 </blockquote>
@@ -143,7 +113,7 @@ yyyy</p>
 </div><div class="tip custom-block"><p class="custom-block-title">来自 chatgpt 的解释:</p>
 <p>该命令创建了一个名为“x86_64-linux-gnu-ld”的符号链接,指向“/usr/bin/ld”.这个符号链接可以被用作“x86_64-linux-gnu-ld”二进制文件的替代品.
 符号链接是一种特殊的文件类型,它是一个指向另一个文件的文件,可以用来在文件系统中创建指向其他文件或目录的别名.</p>
-<p>在Linux系统中,“/usr/bin/ld”是一个连接器（linker）,用于将多个目标文件合并为单个可执行文件.通过创建“x86_64-linux-gnu-ld”的符号链接,可以使该链接器的功能可以在不同的系统上使用,并且不需要更改可执行文件的代码.
+<p>在 Linux 系统中,“/usr/bin/ld”是一个连接器（linker）,用于将多个目标文件合并为单个可执行文件.通过创建“x86_64-linux-gnu-ld”的符号链接,可以使该链接器的功能可以在不同的系统上使用,并且不需要更改可执行文件的代码. <a href="http://jyywiki.cn/OS/2023/build/lect3.ipynb" target="_blank" rel="noreferrer">123</a>
 这个符号链接通常被用于交叉编译（cross-compiling）应用程序,这种情况下,应用程序在不同的硬件平台上运行.</p>
 </div>
 <h3 id="_2-使用-vscode-等编辑器时-第一个问题的代码中头文件无法跳转" tabindex="-1">2. 使用 vscode 等编辑器时,第一个问题的代码中头文件无法跳转 <a class="header-anchor" href="#_2-使用-vscode-等编辑器时-第一个问题的代码中头文件无法跳转" aria-label="Permalink to &quot;2. 使用 vscode 等编辑器时,第一个问题的代码中头文件无法跳转&quot;">&ZeroWidthSpace;</a></h3>
@@ -151,11 +121,11 @@ yyyy</p>
 <div class="language-shell"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki material-theme-palenight" ><code><span class="line"><span style="color: #FFCB6B">bear</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">--</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">make</span></span>
 <span class="line"></span></code></pre>
 </div><div class="tip custom-block"><p class="custom-block-title">来自 chatgpt 的解释:</p>
-<p>该命令使用Bear和Make工具,用于自动捕获Makefile的编译命令和编译期间的调用链.</p>
-<p>具体来说,Bear是一个工具,它可以将系统调用跟踪器（strace）输出转换为JSON格式的文件,这个文件包含了所有运行期间的系统调用.
-Make是一个工具,它用于根据Makefile规则自动构建和编译程序.</p>
-<p>当这两个工具一起使用时,可以使用“bear -- make”命令自动捕获Makefile的编译命令和编译期间的调用链,这个过程可以在后续的调试中使用.
-该命令的执行将产生一个JSON格式的文件,其中包含编译期间的所有系统调用和它们的参数.这个文件可以用于调试,性能优化,以及自动化编译和构建系统的开发.</p>
+<p>该命令使用 Bear 和 Make 工具,用于自动捕获 Makefile 的编译命令和编译期间的调用链.</p>
+<p>具体来说,Bear 是一个工具,它可以将系统调用跟踪器（strace）输出转换为 JSON 格式的文件,这个文件包含了所有运行期间的系统调用.
+Make 是一个工具,它用于根据 Makefile 规则自动构建和编译程序.</p>
+<p>当这两个工具一起使用时,可以使用“bear -- make”命令自动捕获 Makefile 的编译命令和编译期间的调用链,这个过程可以在后续的调试中使用.
+该命令的执行将产生一个 JSON 格式的文件,其中包含编译期间的所有系统调用和它们的参数.这个文件可以用于调试,性能优化,以及自动化编译和构建系统的开发.</p>
 <p>总之,“bear -- make”命令可以帮助程序员更好地理解他们的代码在编译期间所做的事情,以及识别代码中的潜在问题.</p>
 </div>
 <h3 id="_3-写一个-pstree-m1" tabindex="-1">3. 写一个 pstree - M1 <a class="header-anchor" href="#_3-写一个-pstree-m1" aria-label="Permalink to &quot;3. 写一个 pstree - M1&quot;">&ZeroWidthSpace;</a></h3>
@@ -169,7 +139,7 @@ Make是一个工具,它用于根据Makefile规则自动构建和编译程序.</p
 <li>读取 name 以及 ppid</li>
 <li>建树并打印树结构</li>
 </ol>
-<h3 id="_4-关于编译新的os-workbench" tabindex="-1"><s>4. 关于编译新的os-workbench</s> <a class="header-anchor" href="#_4-关于编译新的os-workbench" aria-label="Permalink to &quot;~~4. 关于编译新的os-workbench~~&quot;">&ZeroWidthSpace;</a></h3>
+<h3 id="_4-关于编译新的-os-workbench" tabindex="-1"><s>4. 关于编译新的 os-workbench</s> <a class="header-anchor" href="#_4-关于编译新的-os-workbench" aria-label="Permalink to &quot;~~4. 关于编译新的 os-workbench~~&quot;">&ZeroWidthSpace;</a></h3>
 <p><s>今天尝试下载了一下 2023 年的代码仓库,没想到可以下了</s></p>
 <div class="language-shell"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki material-theme-palenight" ><code><span class="line"><span style="color: #89DDFF">~</span><span style="color: #A6ACCD">~git clone https://git.nju.edu.cn/jyy/os-workbench.git~~</span></span>
 <span class="line"></span></code></pre>
@@ -220,11 +190,17 @@ Make是一个工具,它用于根据Makefile规则自动构建和编译程序.</p
             <link>https://fzdwx.github.io/content/posts/2023-02-13-asd.html</link>
             <guid>https://fzdwx.github.io/content/posts/2023-02-13-asd.html</guid>
             <pubDate>Mon, 13 Feb 2023 12:10:04 GMT</pubDate>
-            <content:encoded><![CDATA[<p>项目地址： <a href="https://github.com/fzdwx/popup-translation" target="_blank" rel="noreferrer">https://github.com/fzdwx/popup-translation</a></p>
-<p>基本原理就是通过 wry 打开一个 webview 窗口,然后打开某个翻译平台的网页翻译内容,并通过 js 代码屏蔽掉不需要的内容,专注于翻译内容本身.</p>
-<p><img src="/images/20230213201701.png" alt="弹窗示例"></p>
-<p>当前获取需要被翻译的内容是从 粘贴板 中读取的（当然也可以直接指定 <code>fanyi hello</code>）,在
-Linux(x11) 下支持直接翻译被鼠标选中的内容（即不需要复制到粘贴板中）.</p>
+            <content:encoded><![CDATA[<p>项目地址： <a href="https://github.com/fzdwx/popup-translation" target="_blank" rel="noreferrer">https://github.com/fzdwx/popup-translation</a>, 目前已经用 tauri + vue3 改写了</p>
+<p>支持两种模式:</p>
+<ol>
+<li>聚合模式, 一次性请求所有的平台</li>
+<li>单平台模式, 一次请求一个平台</li>
+</ol>
+<p>然后还添加了配置功能, 可以自定义快捷键等, 以及最重要的 划词翻译, 也就是选中文本后, 按下快捷键, 就会弹出翻译窗口.</p>
+<p>不过只测试 linux(x11) 上的运行情况</p>
+<p>使用 tauri 的话好处就是打包分发的包很小, 但是缺点就是编译太慢了, 好在可以用 github action release.</p>
+<p><img src="/images/2023-03-28-17-57-41.png" alt="123123"></p>
+<p><img src="/images/2023-03-28-17-30-31.png" alt="123123"></p>
 ]]></content:encoded>
         </item>
         <item>
