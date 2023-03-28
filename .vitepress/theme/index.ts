@@ -1,6 +1,7 @@
 // https://vitepress.dev/guide/custom-theme
 import Theme from "vitepress/theme";
 import { Layout, attachShortcuts } from "@/index";
+import "./style.css";
 
 export default {
   ...Theme,

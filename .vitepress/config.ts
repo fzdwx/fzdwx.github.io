@@ -9,6 +9,9 @@ export default defineConfigWithTheme<ThemeConfig>({
   title: "fzdwx",
   description: "What your say ?",
   themeConfig: {
+    outline: {
+      level: "deep",
+    },
     icon: "https://raw.githubusercontent.com/fzdwx/blog-history/main/static/images/party_parrot.gif",
     dateFormat: "YYYY-MM-DD HH:mm:ss",
     editLink: {
