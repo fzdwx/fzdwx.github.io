@@ -1,5 +1,8 @@
-import { ThemeConfig } from "@/index";
-import { defineConfigWithTheme } from "vitepress";
+import { getRssFeed } from "./theme/rss";
+import { defineConfigWithTheme, PageData } from "vitepress";
+import { ThemeConfig } from "../src/utils/config.type";
+
+const links: { url: string; lastmod: PageData["lastUpdated"] }[] = [];
 
 // https://vitepress.dev/reference/site-config
 export default defineConfigWithTheme<ThemeConfig>({
@@ -35,4 +38,16 @@ export default defineConfigWithTheme<ThemeConfig>({
       { icon: "github", link: "https://github.com/fzdwx/fzdwx.github.io" },
     ],
   },
+  transformHtml: (_, id, { pageData }) => {
+    if (!/[\\/]404\.html$/.test(id))
+      links.push({
+        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, "$2"),
+        lastmod: pageData.lastUpdated,
+      });
+  },
+  buildEnd: getRssFeed({
+    links,
+    baseUrl: "https://fzdwx.github.io",
+    copyright: "© 2023-forever fzdwx",
+  }),
 });
