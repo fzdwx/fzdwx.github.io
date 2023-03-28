@@ -38,6 +38,21 @@ export default defineConfigWithTheme<ThemeConfig>({
       { icon: "github", link: "https://github.com/fzdwx/fzdwx.github.io" },
     ],
   },
+  head: [
+    [
+      "script",
+      { src: "https://www.googletagmanager.com/gtag/js?id=G-DGKZ9K6GHW" },
+    ],
+    [
+      "script",
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DGKZ9K6GHW');`,
+    ],
+  ],
   transformHtml: (_, id, { pageData }) => {
     if (!/[\\/]404\.html$/.test(id))
       links.push({
