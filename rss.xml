@@ -4,7 +4,7 @@
         <title>fzdwx</title>
         <link>https://fzdwx.github.io</link>
         <description>What your say ?</description>
-        <lastBuildDate>Wed, 29 Mar 2023 05:29:18 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Mar 2023 15:44:03 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-US</language>
@@ -19,19 +19,47 @@
             <link>https://fzdwx.github.io/content/docs/ostep/2023-03-28-ostep-sync.html</link>
             <guid>https://fzdwx.github.io/content/docs/ostep/2023-03-28-ostep-sync.html</guid>
             <pubDate>Tue, 28 Mar 2023 12:55:51 GMT</pubDate>
+            <content:encoded><![CDATA[<h2 id="怎么实现一个并发安全的计数器" tabindex="-1">怎么实现一个并发安全的计数器 <a class="header-anchor" href="#怎么实现一个并发安全的计数器" aria-label="Permalink to &quot;怎么实现一个并发安全的计数器&quot;">&ZeroWidthSpace;</a></h2>
+<p>这是一个简单的并发安全的计数器, 它是一个简单,正确,易懂的实现. 它有一个致命缺陷就是 <strong>性能</strong></p>
+<details class="details custom-block"><summary>简单的并发安全的计数器代码实现</summary>
+<div class="language-go"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki material-theme-palenight" ><code><span class="line"><span style="color: #89DDFF">type</span><span style="color: #A6ACCD"> </span><span style="color: #FFCB6B">Add</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">struct</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #A6ACCD">    sync</span><span style="color: #89DDFF">.</span><span style="color: #A6ACCD">Mutex</span></span>
+<span class="line"><span style="color: #A6ACCD">    count </span><span style="color: #C792EA">int</span></span>
+<span class="line"><span style="color: #89DDFF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #89DDFF">func</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">(</span><span style="color: #A6ACCD">a </span><span style="color: #89DDFF">*</span><span style="color: #A6ACCD">Add</span><span style="color: #89DDFF">)</span><span style="color: #A6ACCD"> </span><span style="color: #82AAFF">Get</span><span style="color: #89DDFF">()</span><span style="color: #A6ACCD"> </span><span style="color: #C792EA">int</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #A6ACCD">    a</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">Lock</span><span style="color: #89DDFF">()</span></span>
+<span class="line"><span style="color: #A6ACCD">    </span><span style="color: #89DDFF; font-style: italic">defer</span><span style="color: #A6ACCD"> a</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">Unlock</span><span style="color: #89DDFF">()</span></span>
+<span class="line"><span style="color: #A6ACCD">    </span><span style="color: #89DDFF; font-style: italic">return</span><span style="color: #A6ACCD"> a</span><span style="color: #89DDFF">.</span><span style="color: #A6ACCD">count</span></span>
+<span class="line"><span style="color: #89DDFF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #89DDFF">func</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">(</span><span style="color: #A6ACCD">a </span><span style="color: #89DDFF">*</span><span style="color: #A6ACCD">Add</span><span style="color: #89DDFF">)</span><span style="color: #A6ACCD"> </span><span style="color: #82AAFF">incr</span><span style="color: #89DDFF">()</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #A6ACCD">    a</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">Lock</span><span style="color: #89DDFF">()</span></span>
+<span class="line"><span style="color: #A6ACCD">    </span><span style="color: #89DDFF; font-style: italic">defer</span><span style="color: #A6ACCD"> a</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">Unlock</span><span style="color: #89DDFF">()</span></span>
+<span class="line"><span style="color: #A6ACCD">    a</span><span style="color: #89DDFF">.</span><span style="color: #A6ACCD">count</span><span style="color: #89DDFF">++</span></span>
+<span class="line"><span style="color: #89DDFF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #89DDFF">func</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">(</span><span style="color: #A6ACCD">a </span><span style="color: #89DDFF">*</span><span style="color: #A6ACCD">Add</span><span style="color: #89DDFF">)</span><span style="color: #A6ACCD"> </span><span style="color: #82AAFF">decr</span><span style="color: #89DDFF">()</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #A6ACCD">    a</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">Lock</span><span style="color: #89DDFF">()</span></span>
+<span class="line"><span style="color: #A6ACCD">    </span><span style="color: #89DDFF; font-style: italic">defer</span><span style="color: #A6ACCD"> a</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">Unlock</span><span style="color: #89DDFF">()</span></span>
+<span class="line"><span style="color: #A6ACCD">    a</span><span style="color: #89DDFF">.</span><span style="color: #A6ACCD">count</span><span style="color: #89DDFF">--</span></span>
+<span class="line"><span style="color: #89DDFF">}</span></span>
+<span class="line"></span></code></pre>
+</div></details>
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[并发控制-互斥]]></title>
             <link>https://fzdwx.github.io/content/docs/ostep/2023-03-28-ostep-mutex.html</link>
             <guid>https://fzdwx.github.io/content/docs/ostep/2023-03-28-ostep-mutex.html</guid>
             <pubDate>Tue, 28 Mar 2023 12:09:47 GMT</pubDate>
-            <content:encoded><![CDATA[<h2 id="_1-为什么需要互斥" tabindex="-1">1. 为什么需要互斥? <a class="header-anchor" href="#_1-为什么需要互斥" aria-label="Permalink to &quot;1. 为什么需要互斥?&quot;">&ZeroWidthSpace;</a></h2>
+            <content:encoded><![CDATA[<h2 id="为什么需要互斥" tabindex="-1">为什么需要互斥? <a class="header-anchor" href="#为什么需要互斥" aria-label="Permalink to &quot;为什么需要互斥?&quot;">&ZeroWidthSpace;</a></h2>
 <ol>
 <li>从指令集的角度看, 一个简单的 ++ 操作可能会被编译为 3 条, load -&gt; add -&gt; store, 一条指令是原子的, 但是 3 条指令就不一定了 —— 操作系统的 Trap 机制</li>
 <li>假如这个程序是多线程的, 且这个变量是共享的, 那么就会竞态条件, 比如说第一个线程 load 了 0 并进行 add 得到 1, 在它 store 之前,它被切换出去了, 然后第二个线程来了并运行了一套 load -&gt;add -&gt; store 写入了 0. 这样当第一个线程再次运行时它不知道第二个线程已经对这个变量进行了操作, 从而导致了错误的结果.</li>
 </ol>
-<h2 id="_2-怎么实现互斥" tabindex="-1">2. 怎么实现互斥? <a class="header-anchor" href="#_2-怎么实现互斥" aria-label="Permalink to &quot;2. 怎么实现互斥?&quot;">&ZeroWidthSpace;</a></h2>
-<h3 id="_2-1-原子交换" tabindex="-1">2.1 原子交换 <a class="header-anchor" href="#_2-1-原子交换" aria-label="Permalink to &quot;2.1 原子交换&quot;">&ZeroWidthSpace;</a></h3>
+<h2 id="怎么实现互斥" tabindex="-1">怎么实现互斥? <a class="header-anchor" href="#怎么实现互斥" aria-label="Permalink to &quot;怎么实现互斥?&quot;">&ZeroWidthSpace;</a></h2>
+<h3 id="原子交换" tabindex="-1">原子交换 <a class="header-anchor" href="#原子交换" aria-label="Permalink to &quot;原子交换&quot;">&ZeroWidthSpace;</a></h3>
 <p>这是一种通过硬件指令实现的互斥, 也是最简单的一种, 但是它的效率不高, 下面是一个简单的示例:</p>
 <div class="language-go"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki material-theme-palenight" ><code><span class="line"><span style="color: #89DDFF">type</span><span style="color: #A6ACCD"> </span><span style="color: #FFCB6B">Mutex</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">struct</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">{</span></span>
 <span class="line"><span style="color: #A6ACCD">    locked </span><span style="color: #C792EA">int32</span></span>
@@ -56,9 +84,9 @@
 <span class="line"></span></code></pre>
 </div><p>当第一个线程调用了 Lock() 时, 它会将 locked 的值从 0 改为 1, 但是当第二个线程调用 Lock() 时, 它会发现 locked 的值已经是 1 了, 所以它会一直 spin 等待第一个线程将 locked 的值改为 0, 这样就实现了互斥.</p>
 <p>而 xchg 就是操作系统提供给我们的一个原子交换指令, 它的作用是将 addr 的值与 new 交换, 并返回 addr 的旧值.</p>
-<h3 id="_2-2-能不能更高效点" tabindex="-1">2.2 能不能更高效点? <a class="header-anchor" href="#_2-2-能不能更高效点" aria-label="Permalink to &quot;2.2 能不能更高效点?&quot;">&ZeroWidthSpace;</a></h3>
+<h3 id="能不能更高效点" tabindex="-1">能不能更高效点? <a class="header-anchor" href="#能不能更高效点" aria-label="Permalink to &quot;能不能更高效点?&quot;">&ZeroWidthSpace;</a></h3>
 <p>上面这种锁的优点就是实现简单, 就是会浪费很多 CPU 时间, 比如说一个线程在等待另一个线程释放锁时, 它会一直 spin 等待, 这样就会浪费很多 CPU 时间</p>
-<h4 id="_2-2-1-主动出让时间片" tabindex="-1">2.2.1 主动出让时间片 <a class="header-anchor" href="#_2-2-1-主动出让时间片" aria-label="Permalink to &quot;2.2.1 主动出让时间片&quot;">&ZeroWidthSpace;</a></h4>
+<h4 id="主动出让时间片" tabindex="-1">主动出让时间片 <a class="header-anchor" href="#主动出让时间片" aria-label="Permalink to &quot;主动出让时间片&quot;">&ZeroWidthSpace;</a></h4>
 <div class="language-go"><button title="Copy Code" class="copy"></button><span class="lang">go</span><pre v-pre class="shiki material-theme-palenight has-highlighted-lines" ><code><span class="line"><span style="color: #89DDFF">func</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">(</span><span style="color: #A6ACCD">m </span><span style="color: #89DDFF">*</span><span style="color: #A6ACCD">Mutex</span><span style="color: #89DDFF">)</span><span style="color: #A6ACCD"> </span><span style="color: #82AAFF">Lock</span><span style="color: #89DDFF">()</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">{</span></span>
 <span class="line"><span style="color: #A6ACCD">  </span><span style="color: #89DDFF; font-style: italic">for</span><span style="color: #A6ACCD"> </span><span style="color: #82AAFF">xchg</span><span style="color: #89DDFF">(&amp;</span><span style="color: #A6ACCD">m</span><span style="color: #89DDFF">.</span><span style="color: #A6ACCD">locked</span><span style="color: #89DDFF">,</span><span style="color: #A6ACCD"> </span><span style="color: #F78C6C">1</span><span style="color: #89DDFF">)</span><span style="color: #A6ACCD"> </span><span style="color: #89DDFF">==</span><span style="color: #A6ACCD"> </span><span style="color: #F78C6C">1</span><span style="color: #89DDFF">{</span></span>
 <span class="line highlighted"><span style="color: #A6ACCD">    </span><span style="color: #82AAFF">yield</span><span style="color: #89DDFF">()</span></span>
@@ -68,7 +96,7 @@
 <span class="line"></span></code></pre>
 </div><p>当 xchg 失败时, 可以主动调用 yield() 出让时间片, 这样就不会浪费 CPU 时间了.</p>
 <p>但是这样同样也有个问题, 假如有很多线程都在等待这个锁, 那么它们都会主动出让时间片, 这样同样效率也很低, 因为这个涉及到线程的切换</p>
-<h4 id="_2-2-2-休眠" tabindex="-1">2.2.2 休眠 <a class="header-anchor" href="#_2-2-2-休眠" aria-label="Permalink to &quot;2.2.2 休眠&quot;">&ZeroWidthSpace;</a></h4>
+<h4 id="休眠" tabindex="-1">休眠 <a class="header-anchor" href="#休眠" aria-label="Permalink to &quot;休眠&quot;">&ZeroWidthSpace;</a></h4>
 <p>使用休眠的方式来实现互斥, 假设有一个线程列表存放获取这把锁的线程, 当它获取锁失败时就放入休眠列表, 当锁被释放时, 就唤醒休眠列表中的线程.</p>
 <p>在 linux 中, futex 就是实现了类似这种机制</p>
 ]]></content:encoded>
@@ -79,59 +107,55 @@
             <guid>https://fzdwx.github.io/content/posts/2023-03-27-vitepress-blog-theme.html</guid>
             <pubDate>Mon, 27 Mar 2023 11:53:12 GMT</pubDate>
             <description><![CDATA[<blockquote>
-<p>这两天写了一个 <code>vitepress</code> blog 主题, 用来替换掉 <code>hugo</code>, 原本的<a href="https://github.com/fzdwx/blog-history" target="_blank" rel="noreferrer">博客存档</a></p>
+<p>这两天写了一个 vitepress blog 主题, 用来替换掉 hugo, 原本的<a href="https://github.com/fzdwx/blog-history" target="_blank" rel="noreferrer">博客存档</a></p>
 </blockquote>
 <p>在功能上尽可能的和原本的主题一致,比如说:</p>
 <ol>
-<li><code>post</code>, 用于存放普通的博客</li>
-<li><code>issue</code>, 一种可以动态更新的博客, 个人以前用来存放一些资料和收藏夹等
+<li>post, 用于存放普通的博客</li>
+<li>issue, 一种可以动态更新的博客, 个人以前用来存放一些资料和收藏夹等
 <ul>
 <li>现在跟以前一样都是用 Gtihub action 来实现的, 不同点是现在直接提供了一个 cli 工具, 用户可以随时拉取</li>
 <li>以前则全部都是用 action 实现的 - <a href="/content/posts/2022-10-15-about-github-action.html">相关介绍</a></li>
 </ul>
 </li>
-<li><code>docs</code>, 用于存放文档/笔记. 得益于使用 vitepress, 所以文档的功能很强大, 有侧边栏,大纲等
+<li>docs, 用于存放文档/笔记. 得益于使用 vitepress, 所以文档的功能很强大, 有侧边栏,大纲等
 <ul>
-<li>大纲是自动生成的, 可以根据一个 <code>group</code> 来进行分组</li>
-<li>而原主题的 <code>docs</code> 跟 <code>post</code> 是一样的</li>
+<li>并且添加了大纲自动生成功能, 根据一个 <code>group</code> 来进行分组</li>
 </ul>
 </li>
 </ol>
-<p>我还提供了一个 cli 工具, 它可以同来辅助使用 <code>vitepress-blog-theme</code>:</p>
-<ol>
-<li>初始化主题: <code>bang init</code></li>
-<li>同步 issue: <code>bang sync</code></li>
-<li>创建 page: <code>bang new</code></li>
-<li>同步主题: <code>bang update</code></li>
-</ol>
-]]></description>
+<p>我还提供了一个 cli 工具, 它可以同来辅助使用 vitepress-blog-theme:</p>
+<div class="language-shell"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki material-theme-palenight" ><code><span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">init</span><span style="color: #A6ACCD"> </span><span style="color: #676E95; font-style: italic"># 初始化主题</span></span>
+<span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">sync</span><span style="color: #A6ACCD"> </span><span style="color: #676E95; font-style: italic"># 同步 issue</span></span>
+<span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">new</span><span style="color: #A6ACCD">  </span><span style="color: #676E95; font-style: italic"># 创建 page</span></span>
+<span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">update</span><span style="color: #A6ACCD"> </span><span style="color: #676E95; font-style: italic"># 同步主题</span></span>
+<span class="line"></span></code></pre>
+</div>]]></description>
             <content:encoded><![CDATA[<blockquote>
-<p>这两天写了一个 <code>vitepress</code> blog 主题, 用来替换掉 <code>hugo</code>, 原本的<a href="https://github.com/fzdwx/blog-history" target="_blank" rel="noreferrer">博客存档</a></p>
+<p>这两天写了一个 vitepress blog 主题, 用来替换掉 hugo, 原本的<a href="https://github.com/fzdwx/blog-history" target="_blank" rel="noreferrer">博客存档</a></p>
 </blockquote>
 <p>在功能上尽可能的和原本的主题一致,比如说:</p>
 <ol>
-<li><code>post</code>, 用于存放普通的博客</li>
-<li><code>issue</code>, 一种可以动态更新的博客, 个人以前用来存放一些资料和收藏夹等
+<li>post, 用于存放普通的博客</li>
+<li>issue, 一种可以动态更新的博客, 个人以前用来存放一些资料和收藏夹等
 <ul>
 <li>现在跟以前一样都是用 Gtihub action 来实现的, 不同点是现在直接提供了一个 cli 工具, 用户可以随时拉取</li>
 <li>以前则全部都是用 action 实现的 - <a href="/content/posts/2022-10-15-about-github-action.html">相关介绍</a></li>
 </ul>
 </li>
-<li><code>docs</code>, 用于存放文档/笔记. 得益于使用 vitepress, 所以文档的功能很强大, 有侧边栏,大纲等
+<li>docs, 用于存放文档/笔记. 得益于使用 vitepress, 所以文档的功能很强大, 有侧边栏,大纲等
 <ul>
-<li>大纲是自动生成的, 可以根据一个 <code>group</code> 来进行分组</li>
-<li>而原主题的 <code>docs</code> 跟 <code>post</code> 是一样的</li>
+<li>并且添加了大纲自动生成功能, 根据一个 <code>group</code> 来进行分组</li>
 </ul>
 </li>
 </ol>
-<p>我还提供了一个 cli 工具, 它可以同来辅助使用 <code>vitepress-blog-theme</code>:</p>
-<ol>
-<li>初始化主题: <code>bang init</code></li>
-<li>同步 issue: <code>bang sync</code></li>
-<li>创建 page: <code>bang new</code></li>
-<li>同步主题: <code>bang update</code></li>
-</ol>
-<hr>
+<p>我还提供了一个 cli 工具, 它可以同来辅助使用 vitepress-blog-theme:</p>
+<div class="language-shell"><button title="Copy Code" class="copy"></button><span class="lang">shell</span><pre v-pre class="shiki material-theme-palenight" ><code><span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">init</span><span style="color: #A6ACCD"> </span><span style="color: #676E95; font-style: italic"># 初始化主题</span></span>
+<span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">sync</span><span style="color: #A6ACCD"> </span><span style="color: #676E95; font-style: italic"># 同步 issue</span></span>
+<span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">new</span><span style="color: #A6ACCD">  </span><span style="color: #676E95; font-style: italic"># 创建 page</span></span>
+<span class="line"><span style="color: #FFCB6B">bang</span><span style="color: #A6ACCD"> </span><span style="color: #C3E88D">update</span><span style="color: #A6ACCD"> </span><span style="color: #676E95; font-style: italic"># 同步主题</span></span>
+<span class="line"></span></code></pre>
+</div><hr>
 <p>主题地址: <a href="https://github.com/fzdwx/vitepress-blog-theme" target="_blank" rel="noreferrer">https://github.com/fzdwx/vitepress-blog-theme</a></p>
 ]]></content:encoded>
         </item>
@@ -160,6 +184,12 @@
             <pubDate>Sun, 05 Mar 2023 14:27:31 GMT</pubDate>
             <content:encoded><![CDATA[<blockquote>
 <p>最近也是又追起了南京大学的操作系统课(前面几次都中途放弃了),记录一下</p>
+<ol>
+<li>课程网站: <a href="http://jyywiki.cn/OS/2023/" target="_blank" rel="noreferrer">http://jyywiki.cn/OS/2023/</a></li>
+<li>课程代码仓库: <a href="https://git.nju.edu.cn/jyy/os-workbench" target="_blank" rel="noreferrer">https://git.nju.edu.cn/jyy/os-workbench</a></li>
+<li>课程视频: <a href="https://www.bilibili.com/video/BV1xX4y1d7v2" target="_blank" rel="noreferrer">https://www.bilibili.com/video/BV1xX4y1d7v2</a></li>
+<li>OSTEP: <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noreferrer">https://pages.cs.wisc.edu/~remzi/OSTEP/</a> <a href="https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese" target="_blank" rel="noreferrer">中文</a></li>
+</ol>
 </blockquote>
 <h3 id="_1-首先就是编译第三节课的一个-demo-时-找不到-ld-等命令" tabindex="-1">1. 首先就是编译第三节课的一个 demo 时,找不到 ld 等命令 <a class="header-anchor" href="#_1-首先就是编译第三节课的一个-demo-时-找不到-ld-等命令" aria-label="Permalink to &quot;1. 首先就是编译第三节课的一个 demo 时,找不到 ld 等命令&quot;">&ZeroWidthSpace;</a></h3>
 <blockquote>
