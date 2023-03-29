@@ -57,11 +57,10 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
   ],
   transformHtml: (_, id, { pageData }) => {
-    if (!/[\\/]404\.html$/.test(id))
-      links.push({
-        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, "$2"),
-        lastmod: pageData.lastUpdated,
-      });
+    links.push({
+      url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, "$2"),
+      lastmod: pageData.lastUpdated,
+    });
   },
   buildEnd: getRssFeed({
     links,

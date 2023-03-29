@@ -17,6 +17,7 @@ const { page, frontmatter } = useData();
     <div class="my-[100px]"></div>
     <VPFooter class="" />
   </div>
+  <div class="pb-[1000px]"></div>
 </template>
 
 <style scoped></style>
