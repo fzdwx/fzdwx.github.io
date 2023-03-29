@@ -7,6 +7,11 @@ layout: post
 ---
 
 > 最近也是又追起了南京大学的操作系统课(前面几次都中途放弃了),记录一下
+>
+> 1. 课程网站: <http://jyywiki.cn/OS/2023/>
+> 2. 课程代码仓库: <https://git.nju.edu.cn/jyy/os-workbench>
+> 3. 课程视频: <https://www.bilibili.com/video/BV1xX4y1d7v2>
+> 4. OSTEP: <https://pages.cs.wisc.edu/~remzi/OSTEP/> [中文](https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese)
 
 ### 1. 首先就是编译第三节课的一个 demo 时,找不到 ld 等命令
 

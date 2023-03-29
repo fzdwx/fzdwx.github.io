@@ -13,10 +13,46 @@
     system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Helvetica, Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --vp-c-text-code: var(--vp-c-text-1);
 }
 
 .VPNavBarTitle .title {
   font-family: "f1Font-Bold";
   font-weight: bold !important;
   font-size: 28px !important;
+}
+
+.prose blockquote {
+  quotes: none;
+}
+
+.prose :where(code):not(:where([class~="not-prose"] *))::before {
+  content: none;
+}
+
+.prose :where(code):not(:where([class~="not-prose"] *))::after {
+  content: none;
+}
+
+.vp-doc :not(pre) > code {
+  @apply text-blue-500/60;
+}
+
+.vp-doc a {
+  @apply px-1;
+}
+
+p,
+li {
+  font-size: 19px !important;
+  color: var(--vp-c-text-1);
+}
+
+.tip p {
+  color: var(--vp-custom-block-tip-text) !important;
+}
+
+.VPDoc .container {
+  @apply pr-[12rem];
 }
