@@ -23,6 +23,10 @@
   font-size: 28px !important;
 }
 
+.custom-block.details summary {
+  font-family: var(--wenkai);
+}
+
 .prose blockquote {
   quotes: none;
 }
