@@ -4,7 +4,7 @@
         <title>fzdwx</title>
         <link>https://fzdwx.github.io</link>
         <description>What your say ?</description>
-        <lastBuildDate>Thu, 30 Mar 2023 01:14:27 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 30 Mar 2023 01:18:17 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-US</language>
@@ -165,10 +165,10 @@
             <guid>https://fzdwx.github.io/content/posts/2023-03-22-web-font.html</guid>
             <pubDate>Wed, 22 Mar 2023 12:32:27 GMT</pubDate>
             <content:encoded><![CDATA[<blockquote>
-<p>最近在研究 <code>vitepress</code> 的主题, 准备把博客从 <code>hugo</code> 改成 <code>vitepress</code>(因为 <code>vitepress</code> 的代码块比 <code>hugo</code> 的好看).</p>
+<p>最近在研究 vitepress 的主题, 准备把博客从 hugo 改成 vitepress (还是前端写页面比较有优势).</p>
 </blockquote>
-<p>在写主题时, 发现我添加的自定义的字体设置 <code>font-weight</code> 怎么也不生效, 但是在 <code>hugo</code> 中是可以的.</p>
-<p>最后一个个 <code>F12</code> 一个个样式的去尝试, 发现 <code>vitepress</code> 的 body 会带下面的样式:</p>
+<p>在写主题时, 发现我添加的自定义的字体设置 <code>font-weight</code> 怎么也不生效, 但是在 hugo 中是可以的.</p>
+<p>最后一个个 <code>F12</code> 一个个样式的去尝试, 发现 vitepress 的 body 会带下面的样式:</p>
 <div class="language-css"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre v-pre class="shiki material-theme-palenight" ><code><span class="line"><span style="color: #FFCB6B">text-rendering</span><span style="color: #A6ACCD">: optimizeLegibility;</span></span>
 <span class="line"><span style="color: #A6ACCD">direction: ltr;</span></span>
 <span class="line"><span style="color: #FFCB6B">font-synthesis</span><span style="color: #A6ACCD">: style;</span></span>
