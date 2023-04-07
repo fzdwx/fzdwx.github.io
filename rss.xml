@@ -4,7 +4,7 @@
         <title>fzdwx</title>
         <link>https://fzdwx.github.io</link>
         <description>What your say ?</description>
-        <lastBuildDate>Thu, 06 Apr 2023 01:03:09 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Apr 2023 00:52:27 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-US</language>
@@ -25,6 +25,9 @@
 <h2 id="最近在看" tabindex="-1">最近在看 <a class="header-anchor" href="#最近在看" aria-label="Permalink to &quot;最近在看&quot;">&ZeroWidthSpace;</a></h2>
 <h3 id="动漫" tabindex="-1">动漫 <a class="header-anchor" href="#动漫" aria-label="Permalink to &quot;动漫&quot;">&ZeroWidthSpace;</a></h3>
 <ClientOnly>
+  <Douban code="35337634"/>
+  <Douban code="36129263"/>
+  <Douban code="35937645"/>
   <Douban code="35604677" to="https://ddys.art/the-witch-from-mercury/"/>
   <Douban code="35417872" to="https://ddys.art/isekaiojisan/"/>
   <Douban code="35853587"/>
