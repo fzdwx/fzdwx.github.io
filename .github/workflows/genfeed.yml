@@ -1,10 +1,15 @@
-name: SyncIssues
+name: GenFeed
+
 on:
-  issues:
-    types: [opened, edited, deleted, closed, locked, unlocked, labeled, pinned]
-  # push:
-  # branches:
-  # - main
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - "links.md"
+
 env:
   token: ${{ secrets.TOKEN }}
   repo: fzdwx.github.io
@@ -21,9 +26,9 @@ jobs:
       - run: cd /tmp && rm -rf vitepress-blog-theme
       - uses: actions/checkout@v3
       - run: bang version
-      - run: bang sync
+      - run: bang feed
       - run: git config --global user.name "github.action"
       - run: git config --global user.email "action@github.com"
-      - run: git add .
+      - run: git add links.json
       - run: git commit -a -m "update"
       - run: git push

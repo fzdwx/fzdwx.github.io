@@ -13,3 +13,4 @@ Welcome to my website! I'm fzdwx, a programmer from China.
 - Email: likelovec@gmail.com
 - [RSS](/rss.xml)
 - [Movies & Anime & TV Series](/content/issues/1)
+- [Links](/links.md)

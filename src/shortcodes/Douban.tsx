@@ -1,4 +1,3 @@
-import { UnwrapNestedRefs } from "vue";
 import "../styles/douban.css";
 
 interface DoubanProps {
@@ -19,7 +18,6 @@ const getDoubanInfo = (id: string, dataRef: Ref<Data | undefined>) => {
       res
         .json()
         .then((j) => {
-          console.log(j);
           s.setItem(`douban-movie-${id}`, JSON.stringify(j));
           dataRef.value = j;
         })
@@ -93,10 +91,8 @@ export default ({ code, to }: DoubanProps) => {
             导演:
             {directorName(
               moive.value?.directors || ([{}] as Data["directors"])
-            )}{" "}
-            / {/*  */}
-            类型：{moive.value?.genres} /{/*  */}
-            上映时间：{moive.value?.year}
+            )}
+            / 类型：{moive.value?.genres} / 上映时间：{moive.value?.year}
           </time>
           <section
             style="max-height:75px;overflow:hidden;"
