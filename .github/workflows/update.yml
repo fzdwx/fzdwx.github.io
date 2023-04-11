@@ -5,6 +5,7 @@ on:
   # branches:
   # - main
 
+name: SyncIssues
 env:
   token: ${{ secrets.TOKEN }}
   repo: fzdwx.github.io
