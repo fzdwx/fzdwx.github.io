@@ -70,3 +70,7 @@ li {
 .aside {
   @apply ml-20;
 }
+
+.post-entry {
+  background-color: transparent;
+}

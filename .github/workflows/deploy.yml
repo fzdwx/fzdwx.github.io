@@ -1,6 +1,10 @@
 name: Deploy
 on:
   workflow_dispatch: {}
+  workflow_run:
+    workflows: ["update-issues"]
+    types:
+      - completed
   push:
     branches:
       - main
