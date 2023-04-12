@@ -10,4 +10,5 @@ feeds:
   - https://fzdwx.github.io/rss.xml
   - https://blog.rxliuli.com/atom.xml
   - https://manateelazycat.github.io/feed.xml
+feedsUrl: https://raw.githubusercontent.com/fzdwx/fzdwx.github.io/main/links.json
 ---
