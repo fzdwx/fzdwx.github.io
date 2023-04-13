@@ -8,7 +8,7 @@ links:
     icon: https://avatars.githubusercontent.com/u/65269574?v=4
 feeds:
   - https://manateelazycat.github.io/feed.xml
-  - https://www.ruanyifeng.com/blog/atom.xml
+  - http://feeds.feedburner.com/ruanyifeng
   - https://blog.codingnow.com/atom.xml
   - https://www.skyzh.dev/posts/index.xml
   - https://www.manjusaka.blog/atom.xml
