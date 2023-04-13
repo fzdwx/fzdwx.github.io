@@ -1,5 +1,5 @@
 ---
-title: RSS 推荐
+title: RSS 订阅
 layout: links
 links:
   - name: fzdwx
@@ -7,7 +7,8 @@ links:
     url: https://fzdwx.github.io
     icon: https://avatars.githubusercontent.com/u/65269574?v=4
 feeds:
-  - https://fzdwx.github.io/rss.xml
-  - https://blog.rxliuli.com/atom.xml
   - https://manateelazycat.github.io/feed.xml
+  - https://www.ruanyifeng.com/blog/atom.xml
+  - https://blog.codingnow.com/atom.xml
+  - https://www.skyzh.dev/posts/index.xml
 ---
