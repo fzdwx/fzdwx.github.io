@@ -30,5 +30,5 @@ jobs:
       - run: git config --global user.name "github.action"
       - run: git config --global user.email "action@github.com"
       - run: git add public/links.json
-      - run: git commit -a -m "update links.json"
+      - run: git commit -m "update links.json"
       - run: git push
