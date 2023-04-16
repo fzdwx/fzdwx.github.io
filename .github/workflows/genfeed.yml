@@ -29,6 +29,11 @@ jobs:
       - run: bang feed
       - run: git config --global user.name "github.action"
       - run: git config --global user.email "action@github.com"
-      - run: git add public/links.json
-      - run: git commit -m "update links.json"
-      - run: git push
+      - run: |
+          if ! git diff --quiet --exit-code public/links.json; then
+            git add public/links.json
+            git commit -m "update links.json"
+            git push
+          else
+            echo "public/links.json not modified."
+          fi
