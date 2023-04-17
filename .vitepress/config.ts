@@ -1,6 +1,6 @@
 import { getRssFeed } from "./theme/rss";
 import { defineConfigWithTheme, PageData } from "vitepress";
-import { ThemeConfig } from "../src/utils/config.type";
+import { ThemeConfig } from "../src/types";
 
 const links: { url: string; lastmod: PageData["lastUpdated"] }[] = [];
 
@@ -8,6 +8,9 @@ const links: { url: string; lastmod: PageData["lastUpdated"] }[] = [];
 export default defineConfigWithTheme<ThemeConfig>({
   title: "fzdwx",
   description: "What your say ?",
+  markdown: {
+    lineNumbers: true,
+  },
   themeConfig: {
     outline: {
       level: "deep",
