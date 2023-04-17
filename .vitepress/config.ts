@@ -15,6 +15,9 @@ export default defineConfigWithTheme<ThemeConfig>({
     outline: {
       level: "deep",
     },
+    search: {
+      provider: "local",
+    },
     icon: "https://raw.githubusercontent.com/fzdwx/blog-history/main/static/images/party_parrot.gif",
     dateFormat: "YYYY-MM-DD HH:mm:ss",
     editLink: {
