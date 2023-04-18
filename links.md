@@ -12,4 +12,5 @@ feeds:
   - https://blog.codingnow.com/atom.xml
   - https://www.skyzh.dev/posts/index.xml
   - https://www.manjusaka.blog/atom.xml
+  - https://weekly.tw93.fun/rss.xml
 --- 
