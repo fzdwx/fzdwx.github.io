@@ -27,7 +27,7 @@ export const getRssFeed = ({
         +new Date(a.frontmatter.date as string)
     );
 
-    rss(config, baseUrl, copyright, posts);
+    rss(config, baseUrl, copyright, posts.slice(0, 5));
 
     await sitemap(baseUrl, config, links);
   };
