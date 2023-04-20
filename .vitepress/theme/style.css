@@ -1,11 +1,11 @@
 @font-face {
   font-family: jinkaiFont;
-  src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.13/font/jinkai.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/jinkai2.woff2");
 }
 
 @font-face {
   font-family: f1Font-Bold;
-  src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.13/font/f1.woff2");
+  src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/f2.woff2");
 }
 
 :root {
