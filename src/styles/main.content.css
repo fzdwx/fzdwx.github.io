@@ -3,8 +3,3 @@
     @apply m-3 w-[95%] py-10 px-5;
   }
 }
-
-.main-content-container {
-  @apply md:w-[80%];
-  @apply sm:w-[75%];
-}
