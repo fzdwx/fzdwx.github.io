@@ -50,7 +50,7 @@ const shouldMb = () => {
 }
 
 .should-mb {
-  @apply pt-14;
+  @apply pt-20;
 }
 
 .ContentDispatch.is-home {
