@@ -4,7 +4,7 @@
         <title>fzdwx</title>
         <link>https://fzdwx.github.io</link>
         <description>What your say ?</description>
-        <lastBuildDate>Fri, 21 Apr 2023 11:55:47 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 21 Apr 2023 12:33:15 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-US</language>
@@ -45,11 +45,11 @@
 <ol>
 <li>解析 .api 文件</li>
 <li>读取 table 信息</li>
-<li>通过 table 信息映射出 add, update, delete, page, get 等功能的 request 以及 response 的类型并放入 apiSpec 中</li>
+<li>通过 table 信息映射出 add, update, delete, page, get 等功能对应的 request 以及 response 的类型并放入 apiSpec 中</li>
 <li>添加 route 到 apiSpec 中</li>
 <li>定义 logic template, 这个是跟 ORM 强相关的, 需要根据情况来实现</li>
 <li>生成 type, handle, logic 等代码</li>
-<li>生成替换原有的 .api 文件</li>
+<li>生成替换原有的 .api 文件, 我这里是将 curd 的 api 信息放在了单独的组中, 以便于区分, 在解析时可以通过自定义属性来设置</li>
 <li>生成 route</li>
 </ol>
 <p>还可以加一些扩展功能, 比如根据 请求类型的 tag 来生成 where 条件, 目前我这边是默认为 eq, 但是可以根据 tag 来生成 like, gt, lt 等条件.</p>
