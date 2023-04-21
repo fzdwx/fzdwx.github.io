@@ -17,11 +17,11 @@ go-zero 提供了一个很好用的工具 goctl, 可以用来生成一些模板�
 
 1. 解析 .api 文件
 2. 读取 table 信息
-3. 通过 table 信息映射出 add, update, delete, page, get 等功能的 request 以及 response 的类型并放入 apiSpec 中
+3. 通过 table 信息映射出 add, update, delete, page, get 等功能对应的 request 以及 response 的类型并放入 apiSpec 中
 4. 添加 route 到 apiSpec 中
 5. 定义 logic template, 这个是跟 ORM 强相关的, 需要根据情况来实现
 6. 生成 type, handle, logic 等代码
-7. 生成替换原有的 .api 文件
+7. 生成替换原有的 .api 文件, 我这里是将 curd 的 api 信息放在了单独的组中, 以便于区分, 在解析时可以通过自定义属性来设置
 8. 生成 route
 
 还可以加一些扩展功能, 比如根据 请求类型的 tag 来生成 where 条件, 目前我这边是默认为 eq, 但是可以根据 tag 来生成 like, gt, lt 等条件.
