@@ -39,7 +39,16 @@ sed -i '8c show-icons: true;' ~/.config/rofi/config.rasi
 
 3.更换主题
 
-参考 https://github.com/lr-tech/rofi-themes-collection#installing-themes
+参考 <https://github.com/lr-tech/rofi-themes-collection#installing-themes>
+
+4.更换快捷键
+
+```txt
+configuration {
+  kb-mode-next: "Alt+Right";
+  kb-mode-previous: "Alt+Left";
+  ...
+```
 
 ---
 
