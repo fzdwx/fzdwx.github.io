@@ -4,8 +4,16 @@ import VPFooter from "vitepress/dist/client/theme-default/components/VPFooter.vu
 import ContentDispatch from "./layout/ContentDispatch.vue";
 import NotFound from "./NotFound.vue";
 import Nav from "./components/Nav.vue";
+import Incr from "./store/index"
 
 const { page, frontmatter } = useData();
+
+
+onMounted(async ()=>{
+  const n =  await Incr()
+  console.log(n);
+})
+
 </script>
 
 <template>

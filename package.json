@@ -27,7 +27,7 @@
     "unplugin-auto-import": "^0.15.2",
     "unplugin-icons": "^0.16.0",
     "unplugin-vue-components": "^0.24.1",
-    "vitepress": "1.0.0-alpha.71",
+    "vitepress": "1.0.0-alpha.75",
     "vue": "^3.2.47"
   },
   "scripts": {
@@ -37,6 +37,7 @@
     "sync": "go run ."
   },
   "dependencies": {
+    "@vercel/kv": "^0.1.1",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vueuse/core": "^9.13.0",
     "body-scroll-lock": "4.0.0-beta.0",
