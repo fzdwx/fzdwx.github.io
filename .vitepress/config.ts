@@ -1,6 +1,6 @@
-import { getRssFeed } from "./theme/rss";
 import { defineConfigWithTheme, PageData } from "vitepress";
 import { ThemeConfig } from "../src/types";
+import { getRssFeed } from "./theme/rss";
 
 const links: { url: string; lastmod: PageData["lastUpdated"] }[] = [];
 
@@ -36,10 +36,10 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: "Notes",
         link: "/tags?layout=issue",
       },
-      {
-        text: "Docs",
-        link: "/tags?layout=doc",
-      },
+      // {
+      //   text: "Docs",
+      //   link: "/tags?layout=doc",
+      // },
       { text: "Tags", link: "/tags?layout=post", activeMatch: "" },
     ],
 
