@@ -6,9 +6,6 @@ import NotFound from "./NotFound.vue";
 import Nav from "./components/Nav.vue";
 
 const { page, frontmatter } = useData();
-
-
-
 </script>
 
 <template>
