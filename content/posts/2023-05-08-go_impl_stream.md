@@ -191,10 +191,13 @@ func ToMap[T any, K comparable](
 
 ## 用我们实现的库在来进行上面的例子
 
-体验上已经差不多了, 不得不说 Java 中的 lambda 确实用起来很舒服.
+体验上已经差不多了, 不得不说 Java 中的 lambda 确实用起来很舒服. 如果 go 能简化一下 func 方法的写法就更好了
+
+::: code-group
 
 ```go
 users := userService.ListUser()
+
 stream.Of(users).
  Filter(func(u user) bool {
   return u.Age > 18
@@ -205,6 +208,18 @@ stream.Of(users).
  Distinct(fx.IdentityString).
  ToArray()
 ```
+
+```java
+List<User> users = userService.listUsers();
+
+List<String> userName = users.stream()
+    .filter(u -> u.age > 18)
+    .map(u -> u.name)
+    .distinct()
+    .collect(Collectors.toList());
+```
+
+:::
 
 **最后**:
 

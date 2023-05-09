@@ -49,10 +49,6 @@ h6 {
   content: none;
 }
 
-.vp-doc :not(pre) > code {
-  @apply text-blue-500/60;
-}
-
 .vp-doc a {
   @apply px-1;
 }

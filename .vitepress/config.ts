@@ -10,6 +10,10 @@ export default defineConfigWithTheme<ThemeConfig>({
   description: "What your say ?",
   markdown: {
     lineNumbers: true,
+    theme: {
+      dark: "github-dark",
+      light: "github-light"
+    }
   },
   themeConfig: {
     outline: {
