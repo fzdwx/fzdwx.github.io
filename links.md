@@ -19,4 +19,6 @@ feeds:
     avatar: https://user-images.githubusercontent.com/7054676/56820343-2fe1b580-687e-11e9-8f6f-778df3a8eafd.png
   - url: https://weekly.tw93.fun/rss.xml
     avatar: https://avatars.githubusercontent.com/u/8736212?v=4
+  - url: https://linux-china.davao.page/rss.xml
+    avatar: https://avatars.githubusercontent.com/u/46711?v=4
 ---
