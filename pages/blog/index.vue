@@ -1,7 +1,7 @@
 <template>
-    <main class=" m-center container">
+    <div class="m-center">
         <articles-list path="/blog"/>
-    </main>
+    </div>
 </template>
 <script setup lang="ts">
 useHead({
