@@ -1,0 +1,70 @@
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/400.css";
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/400-italic.css";
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/500.css";
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/500-italic.css";
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/700.css";
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/800.css";
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/700-italic.css";
+@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/800-italic.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: jinkaiFont;
+    src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/jinkai.woff2");
+}
+
+@font-face {
+    font-family: f1Font-Bold;
+    src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/f2.woff2");
+}
+
+:root {
+    --main-font: jinkaiFont, 'noto sans sc', 'microsoft yahei', '微软雅黑', 'sans-serif';
+    --jet: "Jetbrains Mono", monospace;
+}
+
+body {
+    font-family: var(--main-font);
+}
+
+code {
+    font-family: var(--jet) !important;
+}
+
+.m-center{
+    @apply flex justify-center items-center
+}
+
+
+.header-anchor {
+    float: left;
+    margin-left: -0.87em;
+    padding-right: 0.23em;
+    font-weight: 500;
+    user-select: none;
+    opacity: 0;
+    transition: color 0.25s, opacity 0.25s;
+}
+
+.header-anchor::before {
+    content: "#";
+}
+
+h1:hover .header-anchor,
+h1 .header-anchor:focus,
+h2:hover .header-anchor,
+h2 .header-anchor:focus,
+h3:hover .header-anchor,
+h3 .header-anchor:focus,
+h4:hover .header-anchor,
+h4 .header-anchor:focus,
+h5:hover .header-anchor,
+h5 .header-anchor:focus,
+h6:hover .header-anchor,
+h6 .header-anchor:focus {
+    opacity: 1;
+}

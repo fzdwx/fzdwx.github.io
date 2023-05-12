@@ -1,54 +1,23 @@
 {
-  "author": {
-    "name": "fzdwx",
-    "email": "likelovec@gmail.com",
-    "url": "https://github.com/fzdwx"
-  },
-  "name": "vitepress-blog-theme",
-  "version": "0.2.3",
-  "description": "A blog theme for vitepress",
-  "module": "./src/index.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fzdwx/vitepress-blog-theme"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@iconify/json": "^2.2.62",
-    "@tailwindcss/typography": "^0.5.9",
-    "@types/body-scroll-lock": "^3.1.0",
-    "@types/node": "^18.16.6",
-    "@vue-macros/volar": "^0.9.8",
-    "autoprefixer": "^10.4.14",
-    "feed": "^4.2.2",
-    "postcss": "^8.4.23",
-    "sitemap": "^7.1.1",
-    "tailwindcss": "^3.3.2",
-    "unplugin-auto-import": "^0.15.3",
-    "unplugin-icons": "^0.16.1",
-    "unplugin-vue-components": "^0.24.1",
-    "vitepress": "1.0.0-alpha.75",
-    "vue": "^3.2.47"
-  },
+  "name": "nuxt-app",
+  "private": true,
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview",
-    "sync": "go run ."
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
-  "dependencies": {
-    "@vitejs/plugin-vue-jsx": "^3.0.1",
-    "@vueuse/core": "^10.1.2",
-    "body-scroll-lock": "4.0.0-beta.0",
-    "dayjs": "^1.11.7",
-    "gray-matter": "^4.0.3",
-    "lxgw-wenkai-screen-webfont": "^1.7.0",
-    "vite": "^4.3.5"
-  },
-  "postcss": {
-    "plugins": {
-      "tailwindcss": {},
-      "autoprefixer": {}
-    }
+  "devDependencies": {
+    "@nuxt-themes/elements": "^0.9.4",
+    "@nuxt/content": "^2.6.0",
+    "@nuxt/devtools": "^0.4.6",
+    "@nuxtjs/tailwindcss": "^6.6.8",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "^18",
+    "add": "^2.0.6",
+    "install": "^0.13.0",
+    "nuxt": "^3.4.3",
+    "pinceau": "^0.18.9"
   }
 }

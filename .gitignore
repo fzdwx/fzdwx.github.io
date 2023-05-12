@@ -1,8 +1,9 @@
-.vitepress/cache
-.vitepress/dist
 node_modules
-.idea
-auto-imports.d.ts
-components.d.ts
-
-bin
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist
+.DS_Store
