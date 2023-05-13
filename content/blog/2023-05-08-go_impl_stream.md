@@ -1,7 +1,7 @@
 ---
-title: "用 Go 实现类似 Java 中 Stream 的编程体验"
+title: "在 Go 实现类似 Java 中 Stream 的编程体验"
+description: "在我们的 curd 的日常中, slice 是不可缺少的一部分, 比如我们从数据库中查询出来的数据通常是很多条, 然后我们需要对它们进行一些处理, 比如过滤、转换, 去重等"
 date: "2023-05-08T17:48:09+08:00"
-layout: "blog"
 tags: [go]
 ---
 
