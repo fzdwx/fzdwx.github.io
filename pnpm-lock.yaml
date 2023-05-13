@@ -19,6 +19,9 @@ devDependencies:
   add:
     specifier: ^2.0.6
     version: registry.npmmirror.com/add@2.0.6
+  dayjs:
+    specifier: ^1.11.7
+    version: registry.npmmirror.com/dayjs@1.11.7
   install:
     specifier: ^0.13.0
     version: registry.npmmirror.com/install@0.13.0
@@ -3398,6 +3401,12 @@ packages:
     name: data-uri-to-buffer
     version: 4.0.1
     engines: {node: '>= 12'}
+    dev: true
+
+  registry.npmmirror.com/dayjs@1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.7.tgz}
+    name: dayjs
+    version: 1.11.7
     dev: true
 
   registry.npmmirror.com/debug@2.6.9:

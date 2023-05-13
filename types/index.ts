@@ -14,3 +14,20 @@ export interface Post extends ParsedContent {
 export interface Cover {
     image: string
 }
+
+
+export interface SubFeedsInfo {
+    items: FeedsInfo[]
+}
+
+export interface FeedsInfo {
+    name: string
+    info: FeedsItem[]
+}
+
+export interface FeedsItem {
+    name: string
+    title: string
+    time: string
+    url: string
+}
