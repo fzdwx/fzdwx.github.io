@@ -18,7 +18,7 @@
                     </span>
                     |
                     <span :key="tag" :id="idx"
-                          class="mx-1 rounded py-[0.2rem] px-[0.3rem] bg-just-light/20 font-bold text-just-dark"
+                          class="mx-1 rounded py-[0.2rem] px-[0.3rem] bg-just-light/20 text-just-dark"
                           v-if="doc.tags" v-for="(tag,idx) in doc.tags">
                         {{ tag }}
                     </span>

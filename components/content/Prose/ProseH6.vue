@@ -1,8 +1,8 @@
 <template>
-    <h2 :id="id">
+    <h6 :id="id">
         <slot/>
         <a class="header-anchor float-left" v-if="id && generate" :href="`#${id}`"/>
-    </h2>
+    </h6>
 </template>
 
 <script setup lang="ts">

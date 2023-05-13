@@ -14,7 +14,19 @@
 
 :root {
     --main-font: jinkaiFont, 'noto sans sc', 'microsoft yahei', '微软雅黑', 'sans-serif';
-    --jet: "Jetbrains Mono", monospace;
+    --jet: "Jetbrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.jet {
+    font-family: var(--jet) !important;
+}
+
+.f1 {
+    font-family: f1Font-Bold, var(--main-font);
+}
+
+.main-font {
+    font-family: var(--main-font);
 }
 
 html {
@@ -30,11 +42,11 @@ code {
 }
 
 
-.m-center{
+.m-center {
     @apply flex justify-center items-center
 }
 
-.m-con{
+.m-con {
     @apply max-w-[90%] sm:w-[560px] lg:w-[780px]
 }
 
