@@ -44,9 +44,8 @@ const config = useAppConfig()
                         </li>
                     </ul>
                 </nav>
-                <div class="md:space-x-2 space-x-1 flex items-center">
-<!--                    12313-->
-                </div>
+<!--                <div class="md:space-x-2 space-x-1 flex items-center">-->
+<!--                </div>-->
             </div>
         </div>
     </header>

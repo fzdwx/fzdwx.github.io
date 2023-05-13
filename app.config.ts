@@ -47,6 +47,11 @@ export default defineAppConfig({
             title: "Blog",
             url: "/blog",
             icon: "mdi:text-box-multiple-outline",
-        }
+        },
+        {
+            title: "Feeds",
+            url: "/sub-feeds",
+            icon:"icon-park-outline:rss"
+        },
     ]
 })
