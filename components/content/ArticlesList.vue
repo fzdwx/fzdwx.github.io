@@ -14,9 +14,13 @@ const props = defineProps({
 })
 
 // @ts-ignore
-const {data: _articles} = await useAsyncData('articles', async () => await queryContent<Post>(withTrailingSlash(props.path)).sort({date: -1}).find(), {
-    transform: posts => groupBy(posts, p => new Date(p.date).getFullYear())
-})
+const {data: _articles} = await useAsyncData('articles', async () => await queryContent<Post>(withTrailingSlash(props.path))
+        .sort({date: -1})
+        .where({hidden: {$ne: true}})
+        .find(),
+    {
+        transform: posts => groupBy(posts, p => new Date(p.date).getFullYear())
+    })
 
 const articles = computed(() => _articles.value || [])
 const yearKeys = Object.keys(unref(articles)).reverse()

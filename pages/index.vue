@@ -1,5 +1,5 @@
 <template>
-    <div class="m-center pt-10 pb-20">
+    <div class="m-center pt-10 pb-10">
         <div class="m-con text-xl">
             <content-doc/>
         </div>
