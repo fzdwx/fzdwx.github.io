@@ -24,7 +24,7 @@
                         <h1 class="text-2xl">{{ year }}年</h1>
                     </header>
                     <div class="pl-10 flex flex-row" v-for="item in state.itemsByYear[year]">
-                    <span class="basis-1/4">
+                    <span class="basis-1/4" :aria-label="item.time">
                         {{ formatDate(item.time) }}
                     </span>
                         <a class="basis-1/2" :href="item.url" target="_blank">
@@ -75,10 +75,11 @@ function initGroup() {
 
 function collectItemInfo(name?: string) {
     if (data.value) {
-        if (!name) {
+        if (!name || name === state.currentName) {
             state.currItems = data.value.items.flatMap((v) => {
                 return v.info
             })
+            state.currentName= ""
         } else {
             state.currentName = name
             state.currItems = state.itemsGroup[name]
@@ -97,7 +98,7 @@ function collectItemInfo(name?: string) {
             state.itemsByYear[year].push(v)
         })
     }
-    if (state.itemsByYear){
+    if (state.itemsByYear) {
         Object.keys(state.itemsByYear).forEach((v) => {
             state.itemsByYear[v].sort((a, b) => {
                 return dayjs(b.time).valueOf() - dayjs(a.time).valueOf()

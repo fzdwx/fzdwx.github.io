@@ -7,6 +7,10 @@ export default defineAppConfig({
     footer: {
         copyRight: "2023 ~ forever | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",
     },
+    issues: {
+        owner: "fzdwx",
+        repo: "fzdwx.github.io"
+    },
     feeds: [
         {
             url: "https://manateelazycat.github.io/feed.xml",
@@ -51,7 +55,7 @@ export default defineAppConfig({
         {
             title: "Feeds",
             url: "/sub-feeds",
-            icon:"icon-park-outline:rss"
+            icon: "icon-park-outline:rss"
         },
     ]
 })
