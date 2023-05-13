@@ -1,16 +1,6 @@
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/400.css";
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/400-italic.css";
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/500.css";
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/500-italic.css";
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/700.css";
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/800.css";
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/700-italic.css";
-@import "https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/800-italic.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @font-face {
     font-family: jinkaiFont;
@@ -34,6 +24,7 @@ body {
 code {
     font-family: var(--jet) !important;
 }
+
 
 .m-center{
     @apply flex justify-center items-center
@@ -67,4 +58,35 @@ h5 .header-anchor:focus,
 h6:hover .header-anchor,
 h6 .header-anchor:focus {
     opacity: 1;
+}
+
+
+pre {
+    --scrollbar-thumb: #3b5178;
+}
+
+.dark pre {
+    --scrollbar-thumb: #222222;
+}
+
+* {
+    --scrollbar-track: initial;
+    --scrollbar-thumb: initial;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+    --scrollbar-thumb: #acbad2;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track)
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: .25rem
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
 }

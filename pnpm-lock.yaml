@@ -28,9 +28,9 @@ devDependencies:
   nuxt:
     specifier: ^3.4.3
     version: registry.npmmirror.com/nuxt@3.4.3(@types/node@18.0.0)(rollup@3.21.6)(typescript@5.0.4)
-  pinceau:
-    specifier: ^0.18.9
-    version: registry.npmmirror.com/pinceau@0.18.9(postcss@8.4.23)
+  nuxt-icon:
+    specifier: ^0.4.0
+    version: registry.npmmirror.com/nuxt-icon@0.4.0(rollup@3.21.6)(vue@3.3.1)
 
 packages:
 
@@ -780,6 +780,24 @@ packages:
     version: 5.1.0
     dependencies:
       '@hapi/hoek': registry.npmmirror.com/@hapi/hoek@9.3.0
+    dev: true
+
+  registry.npmmirror.com/@iconify/types@2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/types/-/types-2.0.0.tgz}
+    name: '@iconify/types'
+    version: 2.0.0
+    dev: true
+
+  registry.npmmirror.com/@iconify/vue@4.1.1(vue@3.3.1):
+    resolution: {integrity: sha512-RL85Bm/DAe8y6rT6pux7D2FJSiUEM/TPfyK7GrbAOfTSwrhvwJW+S5yijdGcmtXouA8MtuH9C7l4hiSE4mLMjg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/vue/-/vue-4.1.1.tgz}
+    id: registry.npmmirror.com/@iconify/vue/4.1.1
+    name: '@iconify/vue'
+    version: 4.1.1
+    peerDependencies:
+      vue: '>=3'
+    dependencies:
+      '@iconify/types': registry.npmmirror.com/@iconify/types@2.0.0
+      vue: registry.npmmirror.com/vue@3.3.1
     dev: true
 
   registry.npmmirror.com/@ioredis/commands@1.2.0:
@@ -7279,6 +7297,20 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: registry.npmmirror.com/fsevents@2.3.2
+    dev: true
+
+  registry.npmmirror.com/nuxt-icon@0.4.0(rollup@3.21.6)(vue@3.3.1):
+    resolution: {integrity: sha512-j7phHbE4Ug2MsHvj9SidH5Nx9Bs2i/XpoH7HjQJD7DPlWNaI9srJGDOPY1g83S8i4vmDJvCc6KqkLjRasJZlYA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nuxt-icon/-/nuxt-icon-0.4.0.tgz}
+    id: registry.npmmirror.com/nuxt-icon/0.4.0
+    name: nuxt-icon
+    version: 0.4.0
+    dependencies:
+      '@iconify/vue': registry.npmmirror.com/@iconify/vue@4.1.1(vue@3.3.1)
+      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit@3.4.3(rollup@3.21.6)
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+      - vue
     dev: true
 
   registry.npmmirror.com/nuxt@3.4.3(@types/node@18.0.0)(rollup@3.21.6)(typescript@5.0.4):

@@ -30,7 +30,7 @@ const id = computed(() => {
             <p class="mx-4 mb-4 text-sm opacity-50" :title="formatDate(article.date)">
                 {{ formatDate(article.date) }}
                 <span :key="tag"
-                      class="mx-1 rounded py-[0.2rem] px-[0.3rem] font-mono text-xs bg-just-light/30"
+                      class="mx-1 rounded py-[0.2rem] px-[0.3rem] bg-just-light/20 font-bold text-just-dark"
                       v-if="article.tags" v-for="(tag,idx) in article.tags">
                     {{ tag }}
                 </span>
