@@ -11,12 +11,12 @@ export default defineAppConfig({
         {
             title: "Home",
             url: "/",
-            icon: "",
+            icon: "ph:house-line-duotone",
         },
         {
             title: "Blog",
             url: "/blog",
-            icon: "",
+            icon: "mdi:text-box-multiple-outline",
         }
     ]
 })

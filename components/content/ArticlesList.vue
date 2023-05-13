@@ -6,6 +6,10 @@ const props = defineProps({
     path: {
         type: String,
         default: 'articles'
+    },
+    showCd: {
+        type: Boolean,
+        default: true
     }
 })
 
@@ -19,7 +23,8 @@ const yearKeys = Object.keys(unref(articles)).reverse()
 </script>
 
 <template>
-    <div class="max-w-[90%] sm:w-[560px] lg:w-[780px]">
+    <div class="m-con">
+        <cd v-if="showCd"/>
         <div class="space-y-7 mb-10">
             <div v-for="year in yearKeys" :key="year">
                 <div class="space-y-10">
@@ -29,6 +34,5 @@ const yearKeys = Object.keys(unref(articles)).reverse()
                 </div>
             </div>
         </div>
-        <cd/>
     </div>
 </template>

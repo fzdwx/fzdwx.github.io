@@ -1,7 +1,7 @@
 <template>
     <ContentDoc v-slot="{doc}">
         <div class="m-center">
-            <div class="max-w-[90%] sm:w-[560px] lg:w-[780px]">
+            <div class="m-con">
                 <cd/>
                 <header class="m-center">
                     <h1 class="text-2xl ">{{ doc.title }}</h1>

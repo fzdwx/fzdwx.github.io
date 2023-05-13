@@ -17,6 +17,10 @@
     --jet: "Jetbrains Mono", monospace;
 }
 
+html {
+    scroll-padding-top: 80px;
+}
+
 body {
     font-family: var(--main-font);
 }
@@ -28,6 +32,10 @@ code {
 
 .m-center{
     @apply flex justify-center items-center
+}
+
+.m-con{
+    @apply max-w-[90%] sm:w-[560px] lg:w-[780px]
 }
 
 

@@ -4,8 +4,8 @@ const config = useAppConfig()
 </script>
 
 <template>
-    <header>
-        <div class="flex backdrop-blur justify-between items-center max-w-7xl max-h-24 mx-auto sm:px-8 px-4">
+    <header class="backdrop-blur">
+        <div class="flex justify-between items-center max-w-7xl max-h-24 mx-auto sm:px-8 px-4">
             <nuxt-link to="/" class="flex items-center py-4" title="Go Home">
                 <img
                         v-if="config.header.icon"
@@ -31,9 +31,9 @@ const config = useAppConfig()
                                       :title="`Visit ${link.title} Page`">
                                 <div :class="isActive ? ['bg-just-light/20', 'text-just-dark'] : []"
                                      class="md:px-3 md:py-2 px-1 py-1 rounded">
-                                    <svg
+                                    <Icon
                                             v-if="link.icon"
-                                            v-bind="link.icon"
+                                            :name="link.icon"
                                             class="hidden sm:inline-block mr-2 mb-1 transition opacity-75 group-hover:opacity-100"
                                             :class="isActive ? 'opacity-100' : 'opacity-75'"
                                     />

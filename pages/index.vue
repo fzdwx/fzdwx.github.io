@@ -1,11 +1,8 @@
 <template>
-    <div class="m-center">
-        <content-doc/>
-    </div>
+    <div>
 
+    </div>
     <div class="m-center">
-        <articles-list path="/blog"/>
+        <articles-list :showCd="false" path="/blog"/>
     </div>
 </template>
-<script setup lang="ts">
-</script>
