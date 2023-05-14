@@ -52,6 +52,17 @@ const articles = computed(() => {
     })
 })
 
+
+const route = useRoute();
+const initTag = () => {
+    const tag = route.query.tag
+    if (tag) {
+        changeTag(tag as string)
+    }
+}
+
+initTag()
+
 </script>
 
 <template>

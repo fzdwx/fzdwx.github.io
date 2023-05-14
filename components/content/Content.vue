@@ -17,17 +17,20 @@
                         {{ config.header.title }}
                     </span>
                     |
-                    <span :key="tag" :id="idx"
-                          class="mx-1 rounded py-[0.2rem] px-[0.3rem] bg-just-light/20 text-just-dark"
-                          v-if="doc.tags" v-for="(tag,idx) in doc.tags">
+                    <NuxtLink :key="tag" :id="idx"
+                              class="mx-1 rounded py-[0.2rem] px-[0.3rem] cursor-pointer bg-just-light/20 text-just-dark"
+                              v-if="doc.tags" v-for="(tag,idx) in doc.tags"
+                              :to="goTag(tag)"
+                    >
                         {{ tag }}
-                    </span>
+                    </NuxtLink>
                 </div>
 
                 <ContentRender :doc="doc"/>
             </div>
         </div>
     </ContentDoc>
+
 </template>
 <script setup lang="ts">
 import {Post} from "~/types";
@@ -40,4 +43,15 @@ const date = (doc: Post) => {
     }
     return doc.date
 }
+
+const route = useRoute();
+
+const goTag = (tag: string) => {
+    const path = route.path.split('/').slice(0, -1).join('/');
+    if (path){
+        return `${path}?tag=${tag}`
+    }
+    return '/'
+}
+
 </script>
