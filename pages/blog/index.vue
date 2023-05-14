@@ -1,6 +1,8 @@
 <template>
     <div class="m-center">
-        <articles-list path="/blog"/>
+        <div class="m-con">
+            <articles-list path="/blog"/>
+        </div>
     </div>
 </template>
 <script setup lang="ts">

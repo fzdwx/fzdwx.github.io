@@ -1,11 +1,13 @@
 <template>
     <div class="m-center pt-10 pb-10">
-        <div class="m-con text-xl">
+        <div class="m-con text-xl px-6">
             <content-doc/>
         </div>
     </div>
     <div class="m-center">
-        <articles-list :showCd="false" path="/blog"/>
+      <div class="m-con">
+          <articles-list :showCd="false" :show-tag-list="false" path="/blog"/>
+      </div>
     </div>
 </template>
 
@@ -16,3 +18,5 @@ p {
 }
 
 </style>
+<script setup lang="ts">
+</script>
