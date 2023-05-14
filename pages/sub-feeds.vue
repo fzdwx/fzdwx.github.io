@@ -10,7 +10,7 @@
                 </header>
 
                 <span :key="tag" :id="idx"
-                      class="mx-1 rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
+                      class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
                       :class="{
                         'bg-just-light/20 text-just-dark': tag === state.currentName,
                       }"
@@ -19,7 +19,7 @@
                         {{ tag }}
                 </span>
 
-                <div class="pt-5" v-for="(year) in state.years">
+                <div class="pt-5 text-lg" v-for="(year) in state.years">
                     <header class="pb-2">
                         <h1 class="text-2xl">{{ year }}年</h1>
                     </header>
