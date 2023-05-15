@@ -1,6 +1,6 @@
 <template>
     <ContentDoc v-slot="{doc}">
-        <div class="m-center">
+        <div class="m-center break-words">
             <div class="m-con">
                 <div class="mb-10">
                     <cd/>
@@ -48,7 +48,7 @@ const route = useRoute();
 
 const goTag = (tag: string) => {
     const path = route.path.split('/').slice(0, -1).join('/');
-    if (path){
+    if (path) {
         return `${path}?tag=${tag}`
     }
     return '/'

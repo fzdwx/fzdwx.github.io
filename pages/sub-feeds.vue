@@ -23,18 +23,18 @@
                     <header class="pb-2">
                         <h1 class="text-2xl">{{ year }}年</h1>
                     </header>
-                    <div class="pl-10 flex flex-row" v-for="item in state.itemsByYear[year]">
-                    <span class="basis-1/4" :aria-label="item.time">
-                        {{ formatDate(item.time) }}
-                    </span>
-                        <a class="basis-1/2" :href="item.url" target="_blank">
-                        <span class="hover:bg-just-light/20 hover:text-just-dark text-ellipsis">
-                             {{ item.title }}
-                        </span>
-                        </a>
-                        <span class="basis-1/4">
-                        {{ item.name }}
-                    </span>
+                    <div class="pl-2 md:pl-10 flex" v-for="item in state.itemsByYear[year]">
+                        <div class="basis-1/4 text-hidden line-clamp-1" :aria-label="item.time">
+                            {{ formatDate(item.time) }}
+                        </div>
+                        <div class="basis-1/2 text-hidden line-clamp-1">
+                            <a class="hover:bg-just-light/20 hover:text-just-dark" :href="item.url" target="_blank">
+                                {{ item.title }}
+                            </a>
+                        </div>
+                        <div class="basis-1/4 text-hidden line-clamp-1">
+                            {{ item.name }}
+                        </div>
                     </div>
                 </div>
             </content-doc>
@@ -79,7 +79,7 @@ function collectItemInfo(name?: string) {
             state.currItems = data.value.items.flatMap((v) => {
                 return v.info
             })
-            state.currentName= ""
+            state.currentName = ""
         } else {
             state.currentName = name
             state.currItems = state.itemsGroup[name]
@@ -114,3 +114,5 @@ function collectItemInfo(name?: string) {
 
 }
 </script>
+<style scoped>
+</style>

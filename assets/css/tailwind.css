@@ -110,3 +110,10 @@ pre {
     width: 8px;
     height: 8px
 }
+
+
+.text-hidden {
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-inline-box;
+}
