@@ -6,7 +6,7 @@ Hello, Welcome to my website !
 
 <br/>
 
-Find me on :Email{email=likelovec@gmail.com class=px-2} :Github{name=fzdwx}
+Concat me :Email{email=likelovec@gmail.com class=px-2} :Github{name=fzdwx}
 
 <br/>
 

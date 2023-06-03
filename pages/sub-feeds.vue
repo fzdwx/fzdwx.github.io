@@ -23,16 +23,16 @@
                     <header class="pb-2">
                         <h1 class="text-2xl">{{ year }}年</h1>
                     </header>
-                    <div class="pl-2 md:pl-10 flex" v-for="item in state.itemsByYear[year]">
-                        <div class="basis-1/4 text-hidden line-clamp-1" :aria-label="item.time">
+                    <div class="pl-2 md:pl-4 flex" v-for="item in state.itemsByYear[year]">
+                        <div class="basis-1/6 text-hidden line-clamp-1" :aria-label="item.time">
                             {{ formatDate(item.time) }}
                         </div>
-                        <div class="basis-1/2 text-hidden line-clamp-1">
+                        <div class="basis-4/6 text-hidden line-clamp-1">
                             <a class="hover:bg-just-light/20 hover:text-just-dark" :href="item.url" target="_blank">
                                 {{ item.title }}
                             </a>
                         </div>
-                        <div class="basis-1/4 text-hidden line-clamp-1">
+                        <div class="basis-2/6 text-hidden line-clamp-1">
                             {{ item.name }}
                         </div>
                     </div>

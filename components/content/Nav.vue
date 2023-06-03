@@ -24,7 +24,7 @@ const config = useAppConfig()
             </nuxt-link>
             <div class="flex items-center">
                 <nav aria-label="Main Menu" class="opacity-75">
-                    <ul class="flex lg:space-x-7 lg:mr-14 sm:space-x-2 space-x-1 md:mr-7 items-center">
+                    <ul class="flex lg:space-x-4 lg:mr-10 sm:space-x-2 space-x-1 md:mr-7 items-center">
                         <li v-for="(link, key) in config.links" :key="key">
                             <NuxtLink v-slot="{ isActive }" :to="link.url"
                                       class="!inline-flex items-center group font-semibold"
@@ -34,7 +34,7 @@ const config = useAppConfig()
                                     <Icon
                                             v-if="link.icon"
                                             :name="link.icon"
-                                            class="hidden sm:inline-block mr-2 mb-1 transition opacity-75 group-hover:opacity-100"
+                                            class="hidden sm:inline-block md:mr-2 mb-1 transition opacity-75 group-hover:opacity-100"
                                             :class="isActive ? 'opacity-100' : 'opacity-75'"
                                     />
                                     {{ link.title }}
