@@ -3,7 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/fzdwx/infinite"
+	"github.com/fzdwx/infinite/components/input/text"
 	"github.com/mmcdole/gofeed"
+	"github.com/mozillazg/go-pinyin"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 	"io"
@@ -13,13 +16,14 @@ import (
 )
 
 var (
-	Version = "0.0.1"
+	Version = "0.0.2"
 )
 
 func main() {
 	time.LoadLocation("Asia/Shanghai")
 	cmd := root()
 	cmd.AddCommand(genFeedsCmd())
+	cmd.AddCommand(newContent())
 
 	perr("run", cmd.Execute())
 }
@@ -29,6 +33,66 @@ func root() *cobra.Command {
 		Use:     "bang",
 		Version: Version,
 		Short:   "website helper",
+	}
+}
+
+func newContent() *cobra.Command {
+	var template = `---
+title: {{Title}}
+date: {{Date}}
+tags: [{{Tags}}]
+---
+
+# {{Title}}
+`
+	var makeContent = func(title, tags string) string {
+		tags = strings.Join(strings.Split(tags, " "), ", ")
+		return strings.ReplaceAll(
+			strings.ReplaceAll(
+				strings.ReplaceAll(
+					template,
+					"{{Title}}", title,
+				),
+				"{{Date}}", time.Now().Format("2006-01-02 15:04:05"),
+			),
+			"{{Tags}}", tags)
+	}
+
+	var makeFileName = func(title string) string {
+		a := pinyin.NewArgs()
+		a.Style = pinyin.Normal
+		a.Heteronym = false
+
+		titlePinyin := strings.Join(pinyin.LazyPinyin(title, a), "-")
+		if titlePinyin == "" {
+			titlePinyin = title
+		}
+
+		return "content/blog/" + time.Now().Format("2006-01-02") + "-" + titlePinyin + ".md"
+	}
+
+	return &cobra.Command{
+		Use:   "new",
+		Short: "新建博客",
+		Run: func(_ *cobra.Command, args []string) {
+			blogName, err := infinite.NewText(
+				text.WithPrompt("请输入博客名"),
+				text.WithRequired(),
+				text.WithRequiredMsg("博客名不能为空"),
+			).Display()
+			if err != nil {
+				perr("new content", err)
+				return
+			}
+
+			tags, err := infinite.NewText(text.WithPrompt("请输入标签(多个使用空格隔开)")).Display()
+			if err != nil {
+				perr("new content", err)
+				return
+			}
+
+			os.WriteFile(makeFileName(blogName), []byte(makeContent(blogName, tags)), 0644)
+		},
 	}
 }
 
@@ -99,7 +163,7 @@ func genFeeds(links Links) error {
 		})
 	}
 
-	os.RemoveAll("./public/links.json")
+	_ = os.RemoveAll("./public/links.json")
 	f, err := os.Create("./public/links.json")
 	if err != nil {
 		return err
