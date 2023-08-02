@@ -7,7 +7,7 @@ export default defineAppConfig({
     footer: {
         copyRight: "2023 ~ forever | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",
     },
-    issues: {
+    github: {
         owner: "fzdwx",
         repo: "fzdwx.github.io"
     },
