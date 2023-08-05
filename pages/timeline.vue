@@ -3,7 +3,7 @@
 import useTimeline from "~/composables/useTimeline";
 import {parseDate} from "../.nuxt/imports";
 
-const {next, data,setPageSize} = useTimeline();
+const {next, data, setPageSize} = useTimeline();
 
 const floor = ref();
 
@@ -20,7 +20,7 @@ watch(data, () => {
 
 <template>
   <div class="m-center timeline">
-    <div class="m-con ">
+    <div class="m-con">
       <div class="floor mb-2" ref="floor"/>
       <div class="comments">
         <div v-for="item in data?.repository.discussion.comments.edges">
@@ -29,9 +29,9 @@ watch(data, () => {
               <div class="flex flex-row mb-2">
                 <img class="w-[40px] h-[40px] mr-2" :src="item.node.author.avatarUrl" alt="avatar"/>
                 <div class="m-center">
-                  <span>{{ item.node.author.login }}</span>
+                  <a :href="item.node.author.url">{{ item.node.author.login }}</a>
                   <span class="mx-1"></span>
-                  <span class="text-stone-500">{{ parseDate(item.node.updatedAt) }}</span>
+                  <span class="text-stone-500">{{ parseDate(item.node.createdAt) }}</span>
                 </div>
               </div>
               <div v-html="item.node.bodyHTML"/>

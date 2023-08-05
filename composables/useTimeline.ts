@@ -1,4 +1,4 @@
-import {TimelineRoot} from "~/types";
+import {TimelineRoot} from "~/types/timeline";
 
 const useTimeline = () => {
     const cursor = ref('')
@@ -12,7 +12,9 @@ const useTimeline = () => {
                 pageSize: pageSize.value,
             }
         })
-        data.value?.repository.discussion.comments.edges.reverse()
+        data.value?.repository.discussion.comments.edges.sort((a, b) => {
+            return a.node.createdAt < b.node.createdAt ? 1 : -1
+        })
         cursor.value = data.value?.repository.discussion.comments.pageInfo.startCursor || ''
     }
 

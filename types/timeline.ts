@@ -1,13 +1,14 @@
-interface Timeline {
+export interface TimelineRoot {
     repository: Repository
 }
 
-interface Repository {
+export interface Repository {
     discussion: Discussion
 }
 
-interface Discussion {
+export interface Discussion {
     id: string
+    url: string
     body: string
     bodyHTML: string
     bodyText: string
@@ -16,7 +17,7 @@ interface Discussion {
     author: Author2
 }
 
-interface Category {
+export interface Category {
     createdAt: string
     slug: string
     description: string
@@ -26,71 +27,72 @@ interface Category {
     updatedAt: string
 }
 
-interface Comments {
+export interface Comments {
     pageInfo: PageInfo
     edges: Edge[]
 }
 
-interface PageInfo {
+export interface PageInfo {
     startCursor: string
     endCursor: string
     hasNextPage: boolean
     hasPreviousPage: boolean
 }
 
-interface Edge {
+export interface Edge {
     cursor: string
     node: Node
 }
 
-interface Node {
+export interface Node {
     author: Author
     body: string
     bodyHTML: string
     bodyText: string
     createdAt: string
+    updatedAt: string
     publishedAt: string
     url: string
     reactions: Reactions
 }
 
-interface Author {
+export interface Author {
     avatarUrl: string
     login: string
+    url: string
 }
 
-interface Reactions {
+export interface Reactions {
     pageInfo: PageInfo2
     totalCount: number
     edges: Edge2[]
 }
 
-interface PageInfo2 {
+export interface PageInfo2 {
     startCursor: string
     endCursor: string
     hasNextPage: boolean
     hasPreviousPage: boolean
 }
 
-interface Edge2 {
+export interface Edge2 {
     cursor: string
     node: Node2
 }
 
-interface Node2 {
+export interface Node2 {
     content: string
     createdAt: string
     user: User
 }
 
-interface User {
+export interface User {
     avatarUrl: string
     login: string
     bio: string
 }
 
-interface Author2 {
+export interface Author2 {
     avatarUrl: string
     login: string
 }
-

@@ -1,5 +1,5 @@
 import {Octokit} from "octokit";
-import {TimelineRoot} from "~/types";
+import {TimelineRoot} from "~/types/timeline";
 import {QueryValue} from "ufo";
 
 const octokit = new Octokit({
@@ -20,6 +20,7 @@ query {
         body,
         bodyHTML,
         bodyText,
+        url,
         
         category {
          createdAt,
@@ -44,6 +45,7 @@ query {
                     author {
                         avatarUrl,
                         login,
+                        url,
                     },
                     body,
                     bodyHTML,
