@@ -60,10 +60,6 @@ export default defineAppConfig({
             title: "Feeds",
             url: "/sub-feeds",
             icon: "icon-park-outline:rss"
-        },
-        {
-            title:"Timeline",
-            url:"/timeline",
         }
     ]
 })
