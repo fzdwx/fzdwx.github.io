@@ -31,7 +31,7 @@ watch(data, () => {
                 <div class="m-center">
                   <a :href="item.node.author.url">{{ item.node.author.login }}</a>
                   <span class="mx-1"></span>
-                  <span class="text-stone-500">{{ parseDate(item.node.createdAt) }}</span>
+                  <a :href="item.node.url" class="text-stone-500">{{ parseDate(item.node.createdAt) }}</a>
                 </div>
               </div>
               <div v-html="item.node.bodyHTML"/>
