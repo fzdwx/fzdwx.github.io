@@ -21,7 +21,7 @@ watch(data, () => {
 <template>
   <div class="m-center timeline">
     <div class="m-con">
-      <div class="floor mb-2" ref="floor"/>
+      <div class="floor mb-5" ref="floor"/>
       <div class="comments">
         <div v-for="item in data?.repository.discussion.comments.edges">
           <div class="comment p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
@@ -45,15 +45,16 @@ watch(data, () => {
 
 <style>
 
-.timeline h1 {
-  @apply text-2xl
+.floor a {
+  @apply no-underline text-just hover:text-just-dark
 }
 
-.timeline li {
+
+.comment li {
   display: list-item;
 }
 
-.timeline ol {
+.comment ol {
   display: block;
   list-style-type: decimal;
   margin-block-start: 1em;
