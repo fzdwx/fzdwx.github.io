@@ -1,0 +1,67 @@
+<script setup lang="ts">
+
+import useTimeline from "~/composables/useTimeline";
+import {parseDate} from "../.nuxt/imports";
+
+const {next, data,setPageSize} = useTimeline();
+
+const floor = ref();
+
+onMounted(() => {
+  setPageSize(100)
+  next();
+});
+
+watch(data, () => {
+  floor.value.innerHTML = data.value?.repository.discussion.bodyHTML;
+});
+
+</script>
+
+<template>
+  <div class="m-center timeline">
+    <div class="m-con ">
+      <div class="floor mb-2" ref="floor"/>
+      <div class="comments">
+        <div v-for="item in data?.repository.discussion.comments.edges">
+          <div class="comment p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
+            <div class="">
+              <div class="flex flex-row mb-2">
+                <img class="w-[40px] h-[40px] mr-2" :src="item.node.author.avatarUrl" alt="avatar"/>
+                <div class="m-center">
+                  <span>{{ item.node.author.login }}</span>
+                  <span class="mx-1"></span>
+                  <span class="text-stone-500">{{ parseDate(item.node.updatedAt) }}</span>
+                </div>
+              </div>
+              <div v-html="item.node.bodyHTML"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+
+.timeline h1 {
+  @apply text-2xl
+}
+
+.timeline li {
+  display: list-item;
+}
+
+.timeline ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+
+</style>

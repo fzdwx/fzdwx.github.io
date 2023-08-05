@@ -1,47 +1,12 @@
-import type {ParsedContent} from '@nuxt/content/dist/runtime/types'
-
-export interface Post extends ParsedContent {
-    title: string
-    description: string
-    date: string
-    update: string
-    path: string
-    tags?: string[]
-    hidden?: boolean
-    cover?: Cover
-}
-
-export interface Cover {
-    image: string
-}
-
-
-export interface SubFeedsInfo {
-    items: FeedsInfo[]
-}
-
-export interface FeedsInfo {
-    name: string
-    info: FeedsItem[]
-}
-
-export interface FeedsItem {
-    name: string
-    title: string
-    time: string
-    url: string
-}
-
-
-export interface TimelineRoot {
+interface Timeline {
     repository: Repository
 }
 
-export interface Repository {
+interface Repository {
     discussion: Discussion
 }
 
-export interface Discussion {
+interface Discussion {
     id: string
     body: string
     bodyHTML: string
@@ -51,7 +16,7 @@ export interface Discussion {
     author: Author2
 }
 
-export interface Category {
+interface Category {
     createdAt: string
     slug: string
     description: string
@@ -61,71 +26,71 @@ export interface Category {
     updatedAt: string
 }
 
-export interface Comments {
+interface Comments {
     pageInfo: PageInfo
     edges: Edge[]
 }
 
-export interface PageInfo {
+interface PageInfo {
     startCursor: string
     endCursor: string
     hasNextPage: boolean
     hasPreviousPage: boolean
 }
 
-export interface Edge {
+interface Edge {
     cursor: string
     node: Node
 }
 
-export interface Node {
+interface Node {
     author: Author
     body: string
     bodyHTML: string
     bodyText: string
     createdAt: string
-    updatedAt: string
     publishedAt: string
     url: string
     reactions: Reactions
 }
 
-export interface Author {
+interface Author {
     avatarUrl: string
     login: string
 }
 
-export interface Reactions {
+interface Reactions {
     pageInfo: PageInfo2
     totalCount: number
     edges: Edge2[]
 }
 
-export interface PageInfo2 {
+interface PageInfo2 {
     startCursor: string
     endCursor: string
     hasNextPage: boolean
     hasPreviousPage: boolean
 }
 
-export interface Edge2 {
+interface Edge2 {
     cursor: string
     node: Node2
 }
 
-export interface Node2 {
+interface Node2 {
     content: string
     createdAt: string
     user: User
 }
 
-export interface User {
+interface User {
     avatarUrl: string
     login: string
     bio: string
 }
 
-export interface Author2 {
+interface Author2 {
     avatarUrl: string
     login: string
 }
+
