@@ -1,4 +1,4 @@
-name: SyncIssues
+name: update_timeline
 on:
   discussion:
     types: [ edited, deleted, locked, unlocked, labeled, pinned,created ]
@@ -25,10 +25,10 @@ jobs:
       - run: git config --global user.name "github.action"
       - run: git config --global user.email "action@github.com"
       - run: |
-          if ! git diff --quiet --exit-code public/links.json; then
-            git add public/links.json
-            git commit -m "update links.json"
+          if ! git diff --quiet --exit-code public/timeline.json; then
+            git add public/timeline.json
+            git commit -m "update timeline.json"
             git push
           else
-            echo "public/links.json not modified."
+            echo "public/timeline.json not modified."
           fi
