@@ -10,7 +10,6 @@ export default defineNuxtConfig({
         position: "left"
     },
     content: {
-        documentDriven: true,
         highlight: {
             theme: "github-light"
         }
