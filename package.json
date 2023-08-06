@@ -20,5 +20,8 @@
     "nuxt": "^3.4.3",
     "nuxt-icon": "^0.4.0",
     "octokit": "^2.0.14"
+  },
+  "dependencies": {
+    "lxgw-wenkai-webfont": "^1.7.0"
   }
 }

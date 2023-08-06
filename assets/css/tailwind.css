@@ -1,11 +1,13 @@
+@import 'lxgw-wenkai-webfont/style.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: jinkaiFont;
-    src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/jinkai.woff2");
-}
+/*@font-face {*/
+/*    font-family: jinkaiFont;*/
+/*    src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/jinkai.woff2");*/
+/*}*/
 
 @font-face {
     font-family: f1Font-Bold;
@@ -13,8 +15,8 @@
 }
 
 :root {
-    --main-font: jinkaiFont, 'noto sans sc', 'microsoft yahei', '微软雅黑', 'sans-serif';
-    --jet: "Jetbrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --main-font: "LXGW WenKai","Microsoft YaHei", "WenQuanYi Micro Hei", "Noto Sans CJK", sans-serif;
+    --jet: JetBrainsMono, "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", Courier, monospace;
 }
 
 .jet {
@@ -47,7 +49,7 @@ code {
 }
 
 .m-con {
-    @apply max-w-[90%] sm:w-[560px] lg:w-[780px]
+    @apply max-w-[90%] sm:w-[560px] lg:w-[850px]
 }
 
 
@@ -80,40 +82,12 @@ h6 .header-anchor:focus {
     opacity: 1;
 }
 
-
-pre {
-    --scrollbar-thumb: #3b5178;
-}
-
-.dark pre {
-    --scrollbar-thumb: #222222;
-}
-
-* {
-    --scrollbar-track: initial;
-    --scrollbar-thumb: initial;
-    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-    scrollbar-width: thin;
-    --scrollbar-thumb: #acbad2;
-}
-
-::-webkit-scrollbar-track {
-    background-color: var(--scrollbar-track)
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb);
-    border-radius: .25rem
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px
-}
-
-
 .text-hidden {
     -webkit-box-orient: vertical;
     overflow: hidden;
     display: -webkit-inline-box;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

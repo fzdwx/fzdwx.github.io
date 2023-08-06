@@ -42,11 +42,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import {FeedsItem, SubFeedsInfo} from "~/types";
+import {FeedsItem} from "~/types";
 import dayjs from "dayjs";
+import links from "~/public/links.json";
 
-const {data, pending, error, refresh} = await useFetch<SubFeedsInfo>('/links.json')
-refresh().then(() => {
+onMounted(() => {
   initGroup()
   collectItemInfo()
 })
@@ -65,25 +65,21 @@ const formatDate = (date: string) => {
 }
 
 function initGroup() {
-  if (data.value) {
-    data.value.items.forEach((v) => {
-      state.itemsGroup[v.name] = v.info
-      state.names.push(v.name)
-    })
-  }
+  links.items.forEach((v) => {
+    state.itemsGroup[v.name] = v.info
+    state.names.push(v.name)
+  })
 }
 
 function collectItemInfo(name?: string) {
-  if (data.value) {
-    if (!name || name === state.currentName) {
-      state.currItems = data.value.items.flatMap((v) => {
-        return v.info
-      })
-      state.currentName = ""
-    } else {
-      state.currentName = name
-      state.currItems = state.itemsGroup[name]
-    }
+  if (!name || name === state.currentName) {
+    state.currItems = links.items.flatMap((v) => {
+      return v.info
+    })
+    state.currentName = ""
+  } else {
+    state.currentName = name
+    state.currItems = state.itemsGroup[name]
   }
 
   if (state.currItems) {
