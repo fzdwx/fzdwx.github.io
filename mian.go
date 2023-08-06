@@ -174,6 +174,7 @@ func genTimelineCmd() *cobra.Command {
 				perr("create timeline.json", err)
 				return
 			}
+			defer f.Close()
 
 			err = json.NewEncoder(f).Encode(dis)
 			if err != nil {
