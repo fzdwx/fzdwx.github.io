@@ -453,7 +453,7 @@ type CommentSorter []*Comment
 
 func (a CommentSorter) Len() int           { return len(a) }
 func (a CommentSorter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a CommentSorter) Less(i, j int) bool { return a[i].CreatedAt.Before(a[j].CreatedAt) }
+func (a CommentSorter) Less(i, j int) bool { return a[i].CreatedAt.After(a[j].CreatedAt) }
 
 // ReactionGroup is Github Discussion Reaction group scheme
 type ReactionGroup struct {
