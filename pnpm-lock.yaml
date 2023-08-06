@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  lxgw-wenkai-webfont:
-    specifier: ^1.7.0
-    version: 1.7.0
-
 devDependencies:
   '@nuxt/content':
     specifier: ^2.6.0
@@ -34,6 +29,9 @@ devDependencies:
   install:
     specifier: ^0.13.0
     version: registry.npmmirror.com/install@0.13.0
+  lxgw-wenkai-webfont:
+    specifier: ^1.7.0
+    version: 1.7.0
   nuxt:
     specifier: ^3.4.3
     version: registry.npmmirror.com/nuxt@3.4.3(@types/node@18.0.0)
@@ -783,7 +781,7 @@ packages:
 
   /lxgw-wenkai-webfont@1.7.0:
     resolution: {integrity: sha512-kVJmT4xMAyOLhG6q0w63wJkVU7RP8UMQRGoAWj9tnpzL7sWFFYiEHBdUQyW9myqBQFa5SQfWfa2VLYF4IJBL5g==}
-    dev: false
+    dev: true
 
   /magic-string@0.30.0:
     resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
