@@ -3,18 +3,12 @@
 import {parseDate} from "../.nuxt/imports";
 import timeline from "~/public/timeline.json";
 
-const floor = ref();
-
-onMounted(() => {
-  floor.value.innerHTML = timeline.bodyHTML;
-})
-
 </script>
 
 <template>
   <div class="m-center timeline">
     <div class="m-con">
-      <div class="floor mb-5" ref="floor"/>
+      <div class="floor mb-5" ref="floor" v-html="timeline.bodyHTML"/>
       <div class="comments">
         <div v-for="item in timeline.comments.nodes">
           <div class="comment p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
