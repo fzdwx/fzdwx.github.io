@@ -1,7 +1,9 @@
 name: SyncIssues
 on:
   discussion:
-    types: [edited, deleted, locked, unlocked, labeled, pinned]
+    types: [ edited, deleted, locked, unlocked, labeled, pinned,created ]
+  discussion_comment:
+    types: [ edited, deleted, created ]
 
 env:
   token: ${{ secrets.TOKEN }}
