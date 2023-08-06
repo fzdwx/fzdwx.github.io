@@ -1,29 +1,32 @@
 name: SyncIssues
 on:
-  issues:
+  discussions:
     types: [opened, edited, deleted, closed, locked, unlocked, labeled, pinned]
-  # push:
-  # branches:
-  # - main
+
 env:
   token: ${{ secrets.TOKEN }}
+  user: fzdwx
   repo: fzdwx.github.io
+  timeline: 4
 
 jobs:
-  update-issues:
+  update-tilemine:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@v4
         with:
           go-version: 1.20.2
-      - run: cd /tmp && git clone https://github.com/fzdwx/vitepress-blog-theme
-      - run: cd /tmp/vitepress-blog-theme && go install .
-      - run: cd /tmp && rm -rf vitepress-blog-theme
       - uses: actions/checkout@v3
+      - run: go install .
       - run: bang version
-      - run: bang sync
+      - run: bang feed
       - run: git config --global user.name "github.action"
       - run: git config --global user.email "action@github.com"
-      - run: git add .
-      - run: git commit -a -m "update issues"
-      - run: git push
+      - run: |
+          if ! git diff --quiet --exit-code public/links.json; then
+            git add public/links.json
+            git commit -m "update links.json"
+            git push
+          else
+            echo "public/links.json not modified."
+          fi
