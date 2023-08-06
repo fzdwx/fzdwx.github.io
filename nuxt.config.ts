@@ -19,8 +19,4 @@ export default defineNuxtConfig({
     typescript: {
         includeWorkspace: true
     },
-    ssr: false,
-    nitro: {
-        preset: 'service-worker'
-    }
 })
