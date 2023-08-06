@@ -21,6 +21,6 @@ export default defineNuxtConfig({
     },
     ssr: false,
     nitro: {
-        preset: "vercel-static"
+        preset: 'service-worker'
     }
 })
