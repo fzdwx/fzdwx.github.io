@@ -1,20 +1,13 @@
 <script setup lang="ts">
 
-import useTimeline from "~/composables/useTimeline";
 import {parseDate} from "../.nuxt/imports";
-
-const {next, data, setPageSize} = useTimeline();
+import timeline from "~/public/timeline.json";
 
 const floor = ref();
 
 onMounted(() => {
-  setPageSize(100)
-  next();
-});
-
-watch(data, () => {
-  floor.value.innerHTML = data.value?.repository.discussion.bodyHTML;
-});
+  floor.value.innerHTML = timeline.bodyHTML;
+})
 
 </script>
 
@@ -23,18 +16,23 @@ watch(data, () => {
     <div class="m-con">
       <div class="floor mb-5" ref="floor"/>
       <div class="comments">
-        <div v-for="item in data?.repository.discussion.comments.edges">
+        <div v-for="item in timeline.comments.nodes">
           <div class="comment p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
             <div class="">
               <div class="flex flex-row mb-2">
-                <img class="w-[40px] h-[40px] mr-2" :src="item.node.author.avatarUrl" alt="avatar"/>
+                <img class="w-[40px] h-[40px] mr-2" :src="item.author.avatarUrl" alt="avatar"/>
                 <div class="m-center">
-                  <a :href="item.node.author.url">{{ item.node.author.login }}</a>
+                  <a :href="item.author.url">{{ item.author.login }}</a>
                   <span class="mx-1"></span>
-                  <a :href="item.node.url" class="text-stone-500">{{ parseDate(item.node.createdAt) }}</a>
+                  <a :href="item.url" class="text-stone-500">{{ parseDate(item.createdAt) }}</a>
+                  <p class="mx-1">
+                    <span class="bg-just-light/20 text-just-dark  mx-1 px-2 py-1 rounded" v-for="tag in item.tags">
+                    {{ tag }}
+                  </span>
+                  </p>
                 </div>
               </div>
-              <div v-html="item.node.bodyHTML"/>
+              <div v-html="item.bodyHTML"/>
             </div>
           </div>
         </div>

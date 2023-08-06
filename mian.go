@@ -13,6 +13,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"regexp"
+	"sort"
 	"strings"
 	"time"
 )
@@ -144,8 +146,10 @@ func genTimelineCmd() *cobra.Command {
 			// 获取所有的评论
 			hasNextCommentPage := true
 			endCommentCursor := ""
-			dis := &Discussion{}
 			comments := &CommentPage{}
+			dis := &Discussion{
+				Comments: comments,
+			}
 			owner := os.Getenv("user")
 			name := os.Getenv("repo")
 			token := os.Getenv("token")
@@ -168,6 +172,11 @@ func genTimelineCmd() *cobra.Command {
 			}
 			dis.Comments.TotalCount = len(dis.Comments.Nodes)
 
+			commentSorter := CommentSorter(dis.Comments.Nodes)
+			sort.Sort(commentSorter)
+			dis.Comments.Nodes = commentSorter
+
+			parseMeta(dis)
 			_ = os.RemoveAll("./public/timeline.json")
 			f, err := os.Create("./public/timeline.json")
 			if err != nil {
@@ -183,6 +192,51 @@ func genTimelineCmd() *cobra.Command {
 			}
 		},
 	}
+}
+
+func parseMeta(dis *Discussion) {
+	if dis == nil || dis.Comments == nil || dis.Comments.Nodes == nil || len(dis.Comments.Nodes) == 0 {
+		return
+	}
+
+	re := regexp.MustCompile(`\[[^\]]+\]`)
+	for i := range dis.Comments.Nodes {
+		comment := dis.Comments.Nodes[i]
+
+		src := comment.BodyHTML
+		result := re.ReplaceAllStringFunc(src, func(match string) string {
+			return ""
+		})
+
+		comment.BodyHTML = result
+
+		// 获取匹配到的数据
+		tags := []string{}
+		matches := re.FindAllStringSubmatch(src, -1)
+		for _, match := range matches {
+			tags = append(tags, parseTag(match[0])...)
+		}
+
+		comment.Tags = tags
+	}
+}
+
+func parseTag(s string) []string {
+	// [tags:#MySQL]
+	res := []string{}
+	if strings.HasPrefix(s, "[tags:") {
+		tag := strings.TrimPrefix(s, "[tags:")
+		tag = strings.TrimSuffix(tag, "]")
+		tag = strings.TrimSpace(tag)
+		tags := strings.Split(tag, ",")
+		for _, tag := range tags {
+			tag = strings.TrimSpace(tag)
+			if tag != "" {
+				res = append(res, tag)
+			}
+		}
+	}
+	return res
 }
 
 func copydata(dis *Discussion, page *Discussion) {
@@ -391,7 +445,15 @@ type Comment struct {
 	UpdatedAt         time.Time        `json:"updatedAt"`
 	Author            *User            `json:"author"`
 	ReactionGroups    []*ReactionGroup `json:"reactionGroups"`
+
+	Tags []string `json:"tags"`
 }
+
+type CommentSorter []*Comment
+
+func (a CommentSorter) Len() int           { return len(a) }
+func (a CommentSorter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a CommentSorter) Less(i, j int) bool { return a[i].CreatedAt.Before(a[j].CreatedAt) }
 
 // ReactionGroup is Github Discussion Reaction group scheme
 type ReactionGroup struct {
