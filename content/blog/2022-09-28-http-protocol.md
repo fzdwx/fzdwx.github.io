@@ -29,7 +29,7 @@ summary: 简介HTTP/1.1与H2.
 
 #### 请求
 
-```txt
+```
 METHOD<SPACE>URI<SPACE>HTTPVersion
 HEADERS
 <CRLF>
@@ -52,7 +52,7 @@ Accept-Language: zh-CN,zh;q=0.9
 
 #### 响应
 
-```txt
+```
 HTTPVersion HTTPStatus HTTPStatusDesc
 HEADERS
 <CRLF>

@@ -20,7 +20,7 @@ const id = computed(() => {
 <template>
     <div>
         <NuxtLink :to="article._path" :alt="article.title" class="flex w-full flex-col my-4 gap-4 overflow-clip">
-            <img v-if="article.cover" :src="article.cover.image" alt="image"/>
+            <nuxt-img loading="lazy" quality="80" v-if="article.cover" :src="article.cover.image" alt="image"/>
             <p class="mx-4 text-xl opacity-90">
                 {{ article.title }}
             </p>

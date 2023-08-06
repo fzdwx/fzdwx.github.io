@@ -14,7 +14,7 @@ import timeline from "~/public/timeline.json";
           <div class="comment p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
             <div class="">
               <div class="flex flex-row mb-2">
-                <img class="w-[40px] h-[40px] mr-2" :src="item.author.avatarUrl" alt="avatar"/>
+                <nuxt-img class="w-[40px] h-[40px] mr-2" :src="item.author.avatarUrl" alt="avatar"/>
                 <div class="m-center">
                   <a :href="item.author.url">{{ item.author.login }}</a>
                   <span class="mx-1"></span>

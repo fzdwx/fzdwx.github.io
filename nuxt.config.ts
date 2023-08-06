@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     modules: [
         "@nuxt/content",
         "@nuxtjs/tailwindcss",
-        "nuxt-icon"
+        "nuxt-icon",
+        "@nuxt/image",
     ],
     devtools: {
         position: "left"

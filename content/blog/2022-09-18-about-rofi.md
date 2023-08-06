@@ -42,7 +42,7 @@ sed -i '8c show-icons: true;' ~/.config/rofi/config.rasi
 
 4.更换快捷键
 
-```txt
+```
 configuration {
   kb-mode-next: "Alt+Right";
   kb-mode-previous: "Alt+Left";

@@ -7,7 +7,7 @@ const config = useAppConfig()
     <header class="backdrop-blur">
         <div class="flex justify-between items-center max-w-7xl max-h-24 mx-auto sm:px-8 px-4">
             <nuxt-link to="/" class="flex items-center py-4" title="Go Home">
-                <img
+                <nuxt-img
                         v-if="config.header.icon"
                         :src="config.header.icon"
                         width="80"
@@ -15,7 +15,7 @@ const config = useAppConfig()
                         :alt="config.header.title"
                         style="width: 40px; height: 40px;"
                         class="rounded-lg h-10 w-10 mr-3"
-                >
+                />
                 <div aria-label="title" class="hidden sm:block sm:w-[100px] text-transparent bg-clip-text bg-gradient-to-r from-just-light to-just-dark mt-2">
                     <span class="logo-title font-bold text-2xl">
                         {{ config.header.title }}
