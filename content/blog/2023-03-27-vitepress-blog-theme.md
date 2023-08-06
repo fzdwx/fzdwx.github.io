@@ -12,7 +12,7 @@ tags: [project, front]
 1. post, 用于存放普通的博客
 2. issue, 一种可以动态更新的博客, 个人以前用来存放一些资料和收藏夹等
    - 现在跟以前一样都是用 Gtihub action 来实现的, 不同点是现在直接提供了一个 cli 工具, 用户可以随时拉取
-   - 以前则全部都是用 action 实现的 - [相关介绍](/content/posts/2022-10-15-about-github-action)
+   - 以前则全部都是用 action 实现的 - [相关介绍](/blog/2022-10-15-about-github-action)
 3. docs, 用于存放文档/笔记. 得益于使用 vitepress, 所以文档的功能很强大, 有侧边栏,大纲等
    - 并且添加了大纲自动生成功能, 根据一个 `group` 来进行分组
 
