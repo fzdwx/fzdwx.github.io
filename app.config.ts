@@ -10,10 +10,6 @@ export default defineAppConfig({
     github: {
         owner: "fzdwx",
         repo: "fzdwx.github.io",
-        timeline: {
-            discussions: 4,
-            // 必须添加到 env中 GH_TOKEN
-        }
     },
     feeds: [
         {
