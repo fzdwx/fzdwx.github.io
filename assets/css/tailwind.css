@@ -49,7 +49,7 @@ code {
 }
 
 .m-con {
-    @apply max-w-[90%] sm:w-[560px] lg:w-[850px]
+    @apply max-w-[90%] sm:w-[660px] lg:w-[850px]
 }
 
 

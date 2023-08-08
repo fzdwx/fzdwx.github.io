@@ -11,7 +11,7 @@ import timeline from "~/public/timeline.json";
       <div class="floor mb-5" ref="floor" v-html="timeline.bodyHTML"/>
       <div class="comments">
         <div v-for="item in timeline.comments.nodes">
-          <div class="comment p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
+          <div class=" p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
             <div class="">
               <div class="flex flex-row mb-2">
                 <nuxt-img class="w-[40px] h-[40px] mr-2" :src="item.author.avatarUrl" alt="avatar"/>
@@ -26,7 +26,7 @@ import timeline from "~/public/timeline.json";
                   </p>
                 </div>
               </div>
-              <div v-html="item.bodyHTML"/>
+              <div class="comment" v-html="item.bodyHTML"/>
             </div>
           </div>
         </div>
