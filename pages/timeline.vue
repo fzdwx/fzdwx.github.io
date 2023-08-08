@@ -56,7 +56,7 @@ import timeline from "~/public/timeline.json";
   padding-inline-start: 40px;
 }
 
-.comment code{
+.comment code {
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
@@ -65,5 +65,12 @@ import timeline from "~/public/timeline.json";
   border-radius: 6px;
 }
 
+.comment p, .comment blockquote, .comment ul, .comment ol, .comment dl, .comment table, .comment pre, .comment details {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
 
+.comment p a:has( img){
+  @apply flex justify-center items-center
+}
 </style>
