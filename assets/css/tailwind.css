@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 
-
 /*@font-face {*/
 /*    font-family: jinkaiFont;*/
 /*    src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/jinkai.woff2");*/
@@ -15,7 +14,7 @@
 }
 
 :root {
-    --main-font: "LXGW WenKai","Microsoft YaHei", "WenQuanYi Micro Hei", "Noto Sans CJK", sans-serif;
+    --main-font: "LXGW WenKai", "Microsoft YaHei", "WenQuanYi Micro Hei", "Noto Sans CJK", sans-serif;
     --jet: JetBrainsMono, "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", Courier, monospace;
 }
 
