@@ -37,7 +37,7 @@ import timeline from "~/public/timeline.json";
 
 <style>
 
-.floor a {
+.floor a, .comment a {
   @apply no-underline text-just hover:text-just-dark
 }
 
@@ -56,6 +56,21 @@ import timeline from "~/public/timeline.json";
   padding-inline-start: 40px;
 }
 
+.comment ul ul, .comment ul ol, .comment ol ol, .comment ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.comment ul, .comment ol {
+  padding-left: 2em;
+}
+
+.comment ol ul {
+  list-style-type: circle;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
 .comment code {
   padding: 0.2em 0.4em;
   margin: 0;
@@ -70,7 +85,7 @@ import timeline from "~/public/timeline.json";
   margin-bottom: 16px;
 }
 
-.comment p a:has( img){
+.comment p a:has( img) {
   @apply flex justify-center items-center
 }
 </style>

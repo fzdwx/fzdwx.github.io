@@ -90,3 +90,8 @@ h6 .header-anchor:focus {
 ::-webkit-scrollbar {
     display: none;
 }
+
+
+a{
+    cursor: default;
+}
