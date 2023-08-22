@@ -3,14 +3,106 @@
 import {parseDate} from "../.nuxt/imports";
 import timeline from "~/public/timeline.json";
 
+import {Command} from 'vue-command-palette'
+
+import {useMagicKeys} from '@vueuse/core'
+
+const keys = useMagicKeys()
+const MetaK = keys['Meta+K']
+const CmdK = keys['CTRL+K']
+const escape = keys['Escape']
+const visible = ref(false)
+
+const comments = ref(timeline.comments.nodes)
+const currentTag = ref('')
+
+const allTags = new Set(timeline.comments.nodes.map(item => item.tags).flat().map(item => item.replace('#', '')))
+
+const filterComments = (tag: string) => {
+  if (tag === '') {
+    comments.value = timeline.comments.nodes
+  } else {
+    comments.value = timeline.comments.nodes.filter(item => item.tags.includes(`#${tag}`))
+  }
+}
+
+watch(currentTag, (v) => {
+  filterComments(v)
+})
+
+onMounted(() => {
+  document.addEventListener("keydown", function (event) {
+    // 按下 Ctrl+K
+    if (event.ctrlKey && event.keyCode === 75) {
+      event.preventDefault();
+    }
+  });
+
+  filterComments(currentTag.value)
+})
+
+watch(escape, v => {
+  if (v && visible.value) {
+    visible.value = false
+  }
+})
+
+watch(CmdK, (v) => {
+  if (v) {
+    changeVisible()
+  }
+})
+watch(MetaK, (v) => {
+  if (v) {
+    changeVisible()
+  }
+})
+
+const changeVisible = () => {
+  visible.value = !visible.value
+}
 </script>
 
 <template>
+  <div class="w-full mx-auto">
+    <Command.Dialog :visible="visible" theme="raycast" autofocus>
+      <template #header>
+        <Command.Input placeholder="Filter tags..."/>
+      </template>
+      <template #body>
+        <Command.List>
+          <Command.Empty>No results found.</Command.Empty>
+          <Command.Group heading="Commands">
+            <Command.Item
+                data-value='reset'
+                @select="()=>{
+                          currentTag = ''
+                          visible = false
+                          }"
+            >
+              reset
+            </Command.Item>
+          </Command.Group>
+          <Command.Group heading="Tgas">
+            <Command.Item v-for="tag in allTags" :data-value="tag"
+                          @select="()=>{
+                            currentTag = tag
+                          visible = false
+                          }"
+            >
+              {{ tag }}
+            </Command.Item>
+          </Command.Group>
+        </Command.List>
+      </template>
+    </Command.Dialog>
+  </div>
+
   <div class="m-center timeline">
     <div class="m-con">
       <div class="floor mb-5" ref="floor" v-html="timeline.bodyHTML"/>
       <div class="comments">
-        <div v-for="item in timeline.comments.nodes">
+        <div v-for="item in comments">
           <div class=" p-5 mt-2 cursor-default hover:bg-zinc-100 rounded">
             <div class="">
               <div class="flex flex-row mb-2">
@@ -35,7 +127,9 @@ import timeline from "~/public/timeline.json";
   </div>
 </template>
 
-<style>
+<style lang="scss">
+
+@import "../assets/css/raycast.scss";
 
 .floor a, .comment a {
   @apply no-underline text-just hover:text-just-dark

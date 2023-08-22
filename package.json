@@ -20,5 +20,10 @@
     "nuxt": "^3.6.5",
     "nuxt-icon": "^0.4.2",
     "octokit": "^3.1.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.3.0",
+    "sass": "^1.66.1",
+    "vue-command-palette": "^0.2.0"
   }
 }
