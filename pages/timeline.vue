@@ -61,6 +61,14 @@ watch(MetaK, (v) => {
 const changeVisible = () => {
   visible.value = !visible.value
 }
+
+const changeTag = (tag: string) => {
+  if (tag == currentTag.value) {
+    tag = ''
+  }
+  currentTag.value = tag
+  visible.value = false
+}
 </script>
 
 <template>
@@ -75,20 +83,14 @@ const changeVisible = () => {
           <Command.Group heading="Commands">
             <Command.Item
                 data-value='reset'
-                @select="()=>{
-                          currentTag = ''
-                          visible = false
-                          }"
+                @select="changeTag('')"
             >
               reset
             </Command.Item>
           </Command.Group>
           <Command.Group heading="Tgas">
             <Command.Item v-for="tag in allTags" :data-value="tag"
-                          @select="()=>{
-                            currentTag = tag
-                          visible = false
-                          }"
+                          @select="changeTag(tag)"
             >
               {{ tag }}
             </Command.Item>
@@ -112,7 +114,8 @@ const changeVisible = () => {
                   <span class="mx-1"></span>
                   <a :href="item.url" class="text-stone-500">{{ parseDate(item.createdAt) }}</a>
                   <p class="mx-1">
-                    <span class="bg-just-light/20 text-just-dark  mx-1 px-2 py-1 rounded" v-for="tag in item.tags">
+                    <span class="bg-just-light/20 text-just-dark  mx-1 px-2 py-1 rounded"
+                          @click="changeTag(tag.replace('#',''))" v-for="tag in item.tags">
                     {{ tag }}
                   </span>
                   </p>
