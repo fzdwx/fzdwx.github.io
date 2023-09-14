@@ -15,7 +15,7 @@
 
 :root {
     --main-font: "LXGW WenKai", "Microsoft YaHei", "WenQuanYi Micro Hei", "Noto Sans CJK", sans-serif;
-    --jet: JetBrainsMono, "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", Courier, monospace;
+    --jet: "JetBrains Mono", "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", Courier, monospace;
 }
 
 .jet {
@@ -32,6 +32,7 @@
 
 html {
     scroll-padding-top: 80px;
+    font-weight: 300;
 }
 
 body {
@@ -89,9 +90,4 @@ h6 .header-anchor:focus {
 
 ::-webkit-scrollbar {
     display: none;
-}
-
-
-a{
-    cursor: default;
 }

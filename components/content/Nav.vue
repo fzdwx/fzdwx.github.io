@@ -30,7 +30,7 @@ const config = useAppConfig()
                                       class="!inline-flex items-center group font-semibold"
                                       :title="`Visit ${link.title} Page`">
                                 <div :class="isActive ? ['bg-just-light/20', 'text-just-dark'] : []"
-                                     class="md:px-3 md:py-2 px-1 py-1 rounded">
+                                     class="md:px-3 md:py-2 px-1 py-1 rounded font-light">
                                     <Icon
                                             v-if="link.icon"
                                             :name="link.icon"
