@@ -49,14 +49,12 @@ useHead({
 </script>
 
 <template>
-  <Body autofocus class="">
-  <Nav/>
+  <Body autofocus>
   <main class="container lg:px-0 md:pb-20 md:px-8 sm:pb-16 sm:px-6 mx-auto px-7 py-10 pb-10 pt-24 l">
     <NuxtPage transition/>
   </main>
   <footer class="px-5 sm:px-7 md:px-10 my-5  text-center">
-    <div class="invisible">123</div>
-    <p class="mt-5" v-html="config.footer.copyRight">
+    <p class="" v-html="config.footer.copyRight">
     </p>
   </footer>
   </Body>

@@ -5,14 +5,6 @@ import timeline from "~/public/timeline.json";
 
 import {Command} from 'vue-command-palette'
 
-import {useMagicKeys} from '@vueuse/core'
-
-const keys = useMagicKeys()
-const MetaK = keys['Meta+K']
-const CmdK = keys['CTRL+K']
-const escape = keys['Escape']
-const visible = ref(false)
-
 const comments = ref(timeline.comments.nodes)
 const currentTag = ref('')
 
@@ -31,73 +23,33 @@ watch(currentTag, (v) => {
 })
 
 onMounted(() => {
-  document.addEventListener("keydown", function (event) {
-    // 按下 Ctrl+K
-    if (event.ctrlKey && event.keyCode === 75) {
-      event.preventDefault();
-    }
-  });
-
   filterComments(currentTag.value)
 })
 
-watch(escape, v => {
-  if (v && visible.value) {
-    visible.value = false
-  }
-})
-
-watch(CmdK, (v) => {
-  if (v) {
-    changeVisible()
-  }
-})
-watch(MetaK, (v) => {
-  if (v) {
-    changeVisible()
-  }
-})
-
-const changeVisible = () => {
-  visible.value = !visible.value
-}
 
 const changeTag = (tag: string) => {
   if (tag == currentTag.value) {
     tag = ''
   }
   currentTag.value = tag
-  visible.value = false
+  //@ts-ignore
+  window.closeCmkd()
 }
+
 </script>
 
 <template>
   <div class="w-full mx-auto">
-    <Command.Dialog :visible="visible" theme="raycast" autofocus>
-      <template #header>
-        <Command.Input placeholder="Filter tags..."/>
-      </template>
-      <template #body>
-        <Command.List>
-          <Command.Empty>No results found.</Command.Empty>
-          <Command.Group heading="Commands">
-            <Command.Item
-                data-value='reset'
-                @select="changeTag('')"
-            >
-              reset
-            </Command.Item>
-          </Command.Group>
-          <Command.Group heading="Tgas">
-            <Command.Item v-for="tag in allTags" :data-value="tag"
-                          @select="changeTag(tag)"
-            >
-              {{ tag }}
-            </Command.Item>
-          </Command.Group>
-        </Command.List>
-      </template>
-    </Command.Dialog>
+    <cmdk placeholder="Filter tags">
+      <Command.Group heading="Tgas">
+        <Command.Item v-for="tag in allTags" :data-value="tag"
+                      @select="changeTag(tag)"
+        >
+          {{ tag }}
+        </Command.Item>
+      </Command.Group>
+
+    </cmdk>
   </div>
 
   <div class="m-center timeline">
