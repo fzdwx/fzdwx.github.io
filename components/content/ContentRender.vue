@@ -1,8 +1,9 @@
 <template>
-    <ContentRenderer
-            class="doc prose prose-xl
+  <ContentRenderer
+      class="doc prose prose-xl
                         max-w-none
-                        prose-pre:bg-codebg prose-pre:text-codetext prose-code:text-sm
+                        prose-pre:text-codetext prose-code:text-sm
+                        prose-pre:bg-zinc-300/25
                         prose-pre:my-0
                         prose-hr:my-5 prose-hr:border-t-just-light
                         prose-p:my-2 prose-li:my-2 prose-ul:my-2
@@ -11,14 +12,14 @@
                         prose-blockquote:border-l-[3px] prose-blockquote:border-l-just-lighter
                         prose-code:after:content-none prose-code:before:content-none
                         "
-            :value="doc"/>
+      :value="doc"/>
 </template>
 <script setup lang="ts">
 defineProps({
-    doc: {
-        type: Object,
-        required: true
-    }
+  doc: {
+    type: Object,
+    required: true
+  }
 })
 </script>
 

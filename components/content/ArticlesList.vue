@@ -73,7 +73,9 @@ initTag()
 </script>
 
 <template>
-  <cd v-if="showCd"/>
+  <div v-if="showCd" class="pb-10">
+    <cd/>
+  </div>
   <div v-if="showTagList" class="break-all">
         <span v-for="tag in tags"
               class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
