@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {withTrailingSlash} from 'ufo';
 import {Post} from "~/types"
+import {Command} from 'vue-command-palette'
 
 const props = defineProps({
   path: {
@@ -14,6 +15,10 @@ const props = defineProps({
   showTagList: {
     type: Boolean,
     default: true
+  },
+  showCmdk: {
+    type: Boolean,
+    default: false,
   }
 })
 
@@ -31,6 +36,8 @@ const changeTag = (tag: string) => {
     return
   }
   currentTag.value = tag
+  //@ts-ignore
+  window.closeCmkd()
 }
 
 const tags = computed(() => {
@@ -67,24 +74,33 @@ initTag()
 
 <template>
   <cd v-if="showCd"/>
-  <div v-if="showTagList" class="break-all pt-10">
+  <div v-if="showTagList" class="break-all">
         <span v-for="tag in tags"
-              class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap" @click="changeTag(tag)"
+              class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
+              @click="changeTag(tag)"
               :class="{'bg-just-light/20 text-just-dark': currentTag === tag}"
         >
              {{ tag }}
         </span>
-
-    <div class="py-10">
-      <hr>
-    </div>
   </div>
 
-  <div class="space-y-7 mb-10">
+  <div class="pt-20 space-y-7 mb-10">
     <div class="space-y-10">
       <div v-for="(post,key) in articles" :key="key">
         <articles-list-item :article="post"/>
       </div>
     </div>
+  </div>
+
+  <div v-if="showCmdk">
+    <cmdk>
+      <Command.Group heading="Tgas">
+        <Command.Item v-for="tag in tags" :data-value="tag"
+                      @select="changeTag(tag)"
+        >
+          {{ tag }}
+        </Command.Item>
+      </Command.Group>
+    </cmdk>
   </div>
 </template>

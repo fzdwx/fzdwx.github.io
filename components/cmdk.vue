@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {Command} from 'vue-command-palette'
 import {useMagicKeys} from "@vueuse/core";
-
 interface Props {
   placeholder: string
 }
@@ -80,6 +79,6 @@ let config = useAppConfig();
   </Command.Dialog>
 </template>
 
-<style scoped>
-
+<style>
+@import "../assets/css/raycast.scss";
 </style>

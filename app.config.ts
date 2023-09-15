@@ -3,7 +3,7 @@ export default defineAppConfig({
         title: "Fzdwx",
         icon: "https://avatars.githubusercontent.com/u/65269574?v=4",
         description: "fzdwx's blog",
-        slogan: "Just for fun !",
+        slogan: "Just for fun!",
     },
     footer: {
         copyRight: "2023 ~ forever | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",

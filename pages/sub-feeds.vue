@@ -40,11 +40,22 @@
       </content-doc>
     </div>
   </div>
+
+  <cmdk>
+<!--    <Command.Group heading="Tgas">-->
+<!--      <Command.Item v-for="tag in tags" :data-value="tag"-->
+<!--                    @select="changeTag(tag)"-->
+<!--      >-->
+<!--        {{ tag }}-->
+<!--      </Command.Item>-->
+<!--    </Command.Group>-->
+  </cmdk>
 </template>
 <script setup lang="ts">
 import {FeedsItem} from "~/types";
 import dayjs from "dayjs";
 import links from "~/public/links.json";
+import {Command} from 'vue-command-palette'
 
 onMounted(() => {
   initGroup()

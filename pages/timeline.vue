@@ -48,7 +48,6 @@ const changeTag = (tag: string) => {
           {{ tag }}
         </Command.Item>
       </Command.Group>
-
     </cmdk>
   </div>
 
@@ -83,8 +82,6 @@ const changeTag = (tag: string) => {
 </template>
 
 <style lang="scss">
-
-@import "../assets/css/raycast.scss";
 
 .floor a, .comment a {
   @apply no-underline text-just hover:text-just-dark
