@@ -76,7 +76,7 @@ initTag()
   <div v-if="showCd" class="pb-10">
     <cd/>
   </div>
-  <div v-if="showTagList" class="break-all">
+  <div v-if="showTagList" class="break-all pb-10">
         <span v-for="tag in tags"
               class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
               @click="changeTag(tag)"
@@ -86,7 +86,7 @@ initTag()
         </span>
   </div>
 
-  <div class="pt-20 space-y-7 mb-10">
+  <div class="space-y-7 mb-10">
     <div class="space-y-10">
       <div v-for="(post,key) in articles" :key="key">
         <articles-list-item :article="post"/>
