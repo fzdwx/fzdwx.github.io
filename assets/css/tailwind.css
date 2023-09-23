@@ -4,10 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/*@font-face {*/
-/*    font-family: jinkaiFont;*/
-/*    src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/jinkai.woff2");*/
-/*}*/
+@font-face {
+    font-family: jinkaiFont;
+    src: url("https://cdn.jsdelivr.net/gh/fzdwx/get@0.15/font/jinkai.woff2");
+}
 
 @font-face {
     font-family: f1Font-Bold;
@@ -15,13 +15,12 @@
 }
 
 
-
-.cyberwayRiders{
+.cyberwayRiders {
     font-family: 'Cyberway Riders', sans-serif !important;
 }
 
 :root {
-    --main-font: "LXGW WenKai", "Microsoft YaHei", "WenQuanYi Micro Hei", "Noto Sans CJK", sans-serif;
+    --main-font: "jinkaiFont", "Microsoft YaHei", "WenQuanYi Micro Hei", "Noto Sans CJK", sans-serif;
     --jet: "JetBrains Mono", "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", Courier, monospace;
 }
 
@@ -108,7 +107,7 @@ code {
     border-radius: 6px;
 }
 
-.github-light{
+.github-light {
     --tw-bg-opacity: 1;
     background-color: rgb(244 244 245 / var(--tw-bg-opacity)) !important;
 }
