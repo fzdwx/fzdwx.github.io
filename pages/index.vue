@@ -5,7 +5,7 @@ const config = useAppConfig()
 </script>
 
 <template>
-  <div class=" m-center jet text-sm">
+  <div class=" m-center text-sm">
     <div class="m-con px-6">
       <div class="m-center px-5 sm:px-8 lg:px-16 space-x-6 sm:space-x-8 items-center w-full">
         <nuxt-link to="/" class="" title="Go Home">
@@ -19,8 +19,8 @@ const config = useAppConfig()
           />
         </nuxt-link>
 
-        <div class="flex-1 min-w-0 relative space-y-2 sm:space-y-3">
-          <div aria-label="title" class="logo-title font-bold text-xl sm:text-2xl text-just-dark ">
+        <div class="cyberwayRiders flex-1 min-w-0 relative space-y-2 sm:space-y-3">
+          <div aria-label="title" class="logo-title text-xl sm:text-2xl text-just-dark ">
             {{ config.header.title }}
           </div>
           <div class="text-gray-500 text-base">

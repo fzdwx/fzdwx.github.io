@@ -1,6 +1,6 @@
 export default defineAppConfig({
     header: {
-        title: "Fzdwx",
+        title: "fzdwx",
         icon: "https://avatars.githubusercontent.com/u/65269574?v=4",
         description: "fzdwx's blog",
         slogan: "Just for fun!",

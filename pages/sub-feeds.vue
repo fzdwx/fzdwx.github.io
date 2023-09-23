@@ -1,34 +1,47 @@
 <template>
   <div class="m-center">
     <div class="m-con">
-      <content-doc v-slot="{doc}">
+      <content-doc v-slot="{ doc }">
         <div class="pb-5">
-          <cd/>
+          <cd />
         </div>
         <header class="pb-5">
           <h1 class="text-3xl">{{ doc.title }}</h1>
         </header>
 
-        <span :key="tag" :id="idx"
-              class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
-              :class="{
-                        'bg-just-light/20 text-just-dark': tag === state.currentName,
-                      }"
-              @click="collectItemInfo(tag)"
-              v-if="state.names" v-for="(tag,idx) in state.names">
-                        {{ tag }}
-                </span>
+        <span
+          :key="tag"
+          class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
+          :class="{
+            'bg-just-light/20 text-just-dark': tag === state.currentName,
+          }"
+          @click="collectItemInfo(tag)"
+          v-if="state.names"
+          v-for="(tag, idx) in state.names"
+        >
+          {{ tag }}
+        </span>
 
-        <div class="pt-5 text-lg" v-for="(year) in state.years">
+        <div class="pt-5 text-lg" v-for="year in state.years">
           <header class="pb-2">
             <h1 class="text-2xl">{{ year }}年</h1>
           </header>
-          <div class="pl-2 md:pl-4 flex" v-for="item in state.itemsByYear[year]">
-            <div class="basis-1/6 text-hidden line-clamp-1" :aria-label="item.time">
+          <div
+            class="pl-2 md:pl-4 flex"
+            v-for="item in state.itemsByYear[year]"
+          >
+            <div
+              class="basis-1/6 text-hidden line-clamp-1"
+              :aria-label="item.time"
+            >
               {{ formatDate(item.time) }}
             </div>
             <div class="basis-4/6 text-hidden line-clamp-1">
-              <a class="hover:bg-just-light/20 hover:text-just-dark" :href="item.url" target="_blank">
+              <a
+                class="hover:bg-just-light/20 hover:text-just-dark"
+                :href="item.url"
+                target="_blank"
+              >
                 {{ item.title }}
               </a>
             </div>
@@ -41,26 +54,26 @@
     </div>
   </div>
 
-  <cmdk>
-<!--    <Command.Group heading="Tgas">-->
-<!--      <Command.Item v-for="tag in tags" :data-value="tag"-->
-<!--                    @select="changeTag(tag)"-->
-<!--      >-->
-<!--        {{ tag }}-->
-<!--      </Command.Item>-->
-<!--    </Command.Group>-->
+  <cmdk placeholder="">
+    <!--    <Command.Group heading="Tgas">-->
+    <!--      <Command.Item v-for="tag in tags" :data-value="tag"-->
+    <!--                    @select="changeTag(tag)"-->
+    <!--      >-->
+    <!--        {{ tag }}-->
+    <!--      </Command.Item>-->
+    <!--    </Command.Group>-->
   </cmdk>
 </template>
 <script setup lang="ts">
-import {FeedsItem} from "~/types";
+import { FeedsItem } from "~/types";
 import dayjs from "dayjs";
 import links from "~/public/links.json";
-import {Command} from 'vue-command-palette'
+import { Command } from "vue-command-palette";
 
 onMounted(() => {
-  initGroup()
-  collectItemInfo()
-})
+  initGroup();
+  collectItemInfo();
+});
 
 const state = reactive({
   currentName: "",
@@ -72,54 +85,52 @@ const state = reactive({
 });
 
 const formatDate = (date: string) => {
-  return dayjs(date).format('M月D日')
-}
+  return dayjs(date).format("M月D日");
+};
 
 function initGroup() {
   links.items.forEach((v) => {
-    state.itemsGroup[v.name] = v.info
-    state.names.push(v.name)
-  })
+    state.itemsGroup[v.name] = v.info;
+    state.names.push(v.name);
+  });
 }
 
 function collectItemInfo(name?: string) {
   if (!name || name === state.currentName) {
     state.currItems = links.items.flatMap((v) => {
-      return v.info
-    })
-    state.currentName = ""
+      return v.info;
+    });
+    state.currentName = "";
   } else {
-    state.currentName = name
-    state.currItems = state.itemsGroup[name]
+    state.currentName = name;
+    state.currItems = state.itemsGroup[name];
   }
 
   if (state.currItems) {
-    state.itemsByYear = {}
-    state.years = []
+    state.itemsByYear = {};
+    state.years = [];
     state.currItems.forEach((v) => {
-      const year = dayjs(v.time).format('YYYY')
-      state.years.find((v) => v === year) || state.years.push(year)
+      const year = dayjs(v.time).format("YYYY");
+      state.years.find((v) => v === year) || state.years.push(year);
       if (!state.itemsByYear[year]) {
-        state.itemsByYear[year] = []
+        state.itemsByYear[year] = [];
       }
-      state.itemsByYear[year].push(v)
-    })
+      state.itemsByYear[year].push(v);
+    });
   }
   if (state.itemsByYear) {
     Object.keys(state.itemsByYear).forEach((v) => {
       state.itemsByYear[v].sort((a, b) => {
-        return dayjs(b.time).valueOf() - dayjs(a.time).valueOf()
-      })
-    })
+        return dayjs(b.time).valueOf() - dayjs(a.time).valueOf();
+      });
+    });
   }
 
   if (state.years) {
     state.years.sort((a, b) => {
-      return parseInt(b) - parseInt(a)
-    })
+      return parseInt(b) - parseInt(a);
+    });
   }
-
 }
 </script>
-<style scoped>
-</style>
+<style scoped></style>
