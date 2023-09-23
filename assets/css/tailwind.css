@@ -98,3 +98,25 @@ h6 .header-anchor:focus {
 ::-webkit-scrollbar {
     display: none;
 }
+
+code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    white-space: break-spaces;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+}
+
+.github-light{
+    --tw-bg-opacity: 1;
+    background-color: rgb(244 244 245 / var(--tw-bg-opacity)) !important;
+}
+
+.prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::before {
+    content: none;
+}
+
+.prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *)) {
+    @apply not-italic;
+}

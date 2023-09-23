@@ -2,6 +2,7 @@
   <ContentRenderer
       class="doc prose prose-xl
                         max-w-none
+                        text-black/90
                         prose-pre:text-codetext prose-code:text-sm
                         prose-pre:bg-zinc-300/25
                         prose-pre:my-0
@@ -24,13 +25,5 @@ defineProps({
 </script>
 
 <style>
-code {
-  padding: 0.2em 0.4em;
-  margin: 0;
-  font-size: 85%;
-  white-space: break-spaces;
-  background-color: rgba(175, 184, 193, 0.2);
-  border-radius: 6px;
-}
 
 </style>
