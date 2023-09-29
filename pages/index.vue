@@ -1,6 +1,7 @@
 <!-- copy from https://github.com/yzh990918/evan-yang -->
 <script lang="ts" setup>
 import {Command} from 'vue-command-palette'
+
 const config = useAppConfig()
 </script>
 
@@ -33,7 +34,7 @@ const config = useAppConfig()
         </div>
       </div>
 
-      <div class="m-center main-font pt-10">
+      <div class="m-center main-font pt-5">
         <div class="m-con">
           <articles-list :showCd="false" :show-tag-list="false" path="/blog"/>
         </div>
