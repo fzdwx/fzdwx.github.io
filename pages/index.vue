@@ -1,8 +1,6 @@
-<!-- copy from https://github.com/yzh990918/evan-yang -->
 <script lang="ts" setup>
-import {Command} from 'vue-command-palette'
-
 const config = useAppConfig()
+const {show} = useCmdkVisable();
 </script>
 
 <template>
@@ -30,6 +28,11 @@ const config = useAppConfig()
           <div class="flex text-xl space-x-0 sm:space-y-0 sm:space-x-2.5 flex-col sm:flex-row">
             <Github name="fzdwx"/>
             <Email email="likelovec@gmail.com"/>
+            <span class="pt-0.5 text-base cursor-pointer" @click="()=>{
+              show()
+            }">
+              ⌘
+            </span>
           </div>
         </div>
       </div>
@@ -43,7 +46,7 @@ const config = useAppConfig()
   </div>
 
   <div class="w-full mx-auto">
-    <cmdk placeholder="Jump to">
+    <cmdk placeholder="Jump to" default-visible>
     </cmdk>
   </div>
 </template>

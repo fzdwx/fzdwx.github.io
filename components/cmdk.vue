@@ -14,6 +14,13 @@ const CmdK = keys['CTRL+K']
 const escape = keys['Escape']
 const visible = ref(false)
 
+
+const {state} = useCmdkVisable();
+
+watch(state, () => {
+  visible.value = true
+})
+
 onMounted(() => {
   document.addEventListener("keydown", function (event) {
     // 按下 Ctrl+K
@@ -21,6 +28,12 @@ onMounted(() => {
       event.preventDefault();
     }
   });
+
+  window.addEventListener('message', (event) => {
+    if (event.data.type === 'cmdk') {
+      visible.value = event.data.data.visible
+    }
+  })
 
   //@ts-ignore
   window.closeCmkd = () => {

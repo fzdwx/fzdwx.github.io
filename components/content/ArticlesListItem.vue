@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useContentPreview} from '#imports';
-import {Post} from "~/types";
-import {PropType} from "@vue/runtime-core";
+import { useContentPreview } from '#imports';
+import { PropType } from "@vue/runtime-core";
+import { Post } from "~/types";
 
 const props = defineProps({
     article: {
@@ -14,6 +14,8 @@ const id = computed(() => {
     // @ts-ignore
     return (process.dev || useContentPreview()?.isEnabled()) ? props.article?._id : undefined
 })
+
+
 
 </script>
 
