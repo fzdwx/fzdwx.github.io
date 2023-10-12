@@ -89,7 +89,7 @@ initTag()
   <div class="space-y-7 mb-10">
     <div class="space-y-5">
       <div v-for="(post,key) in articles" :key="key">
-        <articles-list-item :article="post" class="hover:bg-zinc-100 hover:shadow hover:rounded-xl p-2"/>
+        <articles-list-item :article="post" class="hover:bg-zinc-100 p-2"/>
       </div>
     </div>
   </div>
