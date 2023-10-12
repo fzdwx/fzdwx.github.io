@@ -3,7 +3,8 @@ export default defineAppConfig({
         title: "fzdwx",
         icon: "https://avatars.githubusercontent.com/u/65269574?v=4",
         description: "fzdwx's blog",
-        slogan: "Just for fun!",
+        slogan: "Wandering on the internet.",
+        emoji: "https://github.githubassets.com/images/icons/emoji/shipit.png"
     },
     footer: {
         copyRight: "2023 ~ forever | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",
@@ -16,21 +17,22 @@ export default defineAppConfig({
         {
             title: "Home",
             url: "/",
-            icon: "ph:house-line-duotone",
+            icon: "fluent-emoji:derelict-house",
         },
         {
             title: "Blog",
             url: "/blog",
-            icon: "mdi:text-box-multiple-outline",
+            icon: "fluent-emoji:pencil",
         },
         {
             title: "Feeds",
             url: "/sub-feeds",
-            icon: "icon-park-outline:rss"
+            icon: "fluent-emoji:bookmark"
         },
         {
             title: "Timeline",
             url: "/timeline",
+            icon: "fluent-emoji:brain"
         }
     ]
 })
