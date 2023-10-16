@@ -4,7 +4,8 @@ export default defineAppConfig({
         icon: "https://avatars.githubusercontent.com/u/65269574?v=4",
         description: "fzdwx's blog",
         slogan: "Wandering on the internet.",
-        emoji: "https://github.githubassets.com/images/icons/emoji/shipit.png"
+        // emoji: "https://github.githubassets.com/images/icons/emoji/shipit.png"
+        emoji: "/images/status.png"
     },
     footer: {
         copyRight: "2023 ~ forever | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",
