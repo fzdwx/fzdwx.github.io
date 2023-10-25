@@ -157,6 +157,7 @@ func genTimelineCmd() *cobra.Command {
 			for hasNextCommentPage {
 				commentPage, err := getCommentPage(owner, name, token, timeline, endCommentCursor)
 				if err != nil {
+					panic(err)
 					return
 				}
 				copydata(dis, commentPage)
@@ -271,6 +272,7 @@ func getCommentPage(owner, name, token, discussionNumber, afterCursor string) (*
 				comments(first: 100, %v) {
 					totalCount
 					nodes {
+						databaseId
 						body
 						bodyHTML
 						createdAt
@@ -436,6 +438,7 @@ type CommentPage struct {
 
 // Comment is Github Discussion comment scheme
 type Comment struct {
+	DatabaseId        int64            `json:"databaseId"`
 	Body              string           `json:"body"`
 	BodyHTML          string           `json:"bodyHTML"`
 	UpvoteCount       int              `json:"upvoteCount"`

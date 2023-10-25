@@ -1,71 +1,48 @@
 <script setup lang="ts">
 
-import timeline from "~/public/timeline.json"
+import {parseDate} from "~/composables/util";
 
-import {Command} from 'vue-command-palette'
-
-const comments = ref(timeline.comments.nodes)
-const currentTag = ref('')
-
-const allTags = new Set(timeline.comments.nodes.map(item => item.tags).flat().map(item => item.replace('#', '')))
-
-const filterComments = (tag: string) => {
-  if (tag === '') {
-    comments.value = timeline.comments.nodes
-  } else {
-    comments.value = timeline.comments.nodes.filter(item => item.tags.includes(`#${tag}`))
-  }
-}
-
-watch(currentTag, (v) => {
-  filterComments(v)
-})
-
-onMounted(() => {
-  filterComments(currentTag.value)
-})
-
-
-const changeTag = (tag: string) => {
-  if (tag == currentTag.value) {
-    tag = ''
-  }
-  currentTag.value = tag
-  //@ts-ignore
-  window.closeCmkd()
-}
-
+const props = defineProps<{
+  item: any
+  changeTag: (tag: string) => void
+}>();
 </script>
 
 <template>
-  <div class="w-full mx-auto">
-    <cmdk placeholder="Filter tags">
-      <Command.Group heading="Tgas">
-        <Command.Item v-for="tag in allTags" :data-value="tag"
-                      @select="changeTag(tag)"
-        >
-          {{ tag }}
-        </Command.Item>
-      </Command.Group>
-    </cmdk>
-  </div>
-
-  <div class="m-center timeline">
-    <div class="m-con">
-      <div class="floor mb-5" ref="floor" v-html="timeline.bodyHTML"/>
-      <div class="comments">
-        <div v-for="item in comments">
-          <timeline-comment :item="item" :change-tag="changeTag"/>
+  <div class=" p-5 mt-2 cursor-default hover:bg-zinc-100 rounded" :id="item.databaseId">
+    <div class="">
+      <div class="flex flex-row mb-2">
+        <nuxt-img class="w-[40px] h-[40px] mr-2" :src="item.author.avatarUrl" alt="avatar"/>
+        <div class="m-center">
+          <a :href="item.author.url" class="pname">{{ item.author.login }}</a>
+          <span class="mx-1"></span>
+          <a :href="item.url" class="purl">{{ parseDate(item.createdAt) }}</a>
+          <p class="mx-1">
+                    <span class="bg-just-light/20 text-just-dark  mx-1 px-2 py-1 rounded"
+                          @click="changeTag(tag.replace('#',''))" v-for="tag in item.tags">
+                    {{ tag }}
+                  </span>
+          </p>
         </div>
       </div>
+      <div class="comment" v-html="item.bodyHTML"/>
     </div>
   </div>
 </template>
 
 <style lang="scss">
 
+.pname{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.purl {
+  --tw-text-opacity: 1;
+  color: rgb(120 113 108 / var(--tw-text-opacity));
+}
+
 .floor a, .comment a {
-  @apply no-underline text-just hover:text-just-dark
+  @apply no-underline text-black hover:text-just-dark
 }
 
 
