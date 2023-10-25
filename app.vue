@@ -7,6 +7,7 @@ useSeoMeta({
   ogDescription: config.header.description,
   ogTitle: config.header.title,
   ogType: 'website',
+  ogImageUrl:"https://gist.githubusercontent.com/fzdwx/b18ed3d40ce56468d149e63d0f58fe3d/raw/7e3ad34c650c77f65ceadef0ba096b2a25713f12/177021515-71aa6c94-7d68-4e12-a191-8d6cc73b8a83.gif"
 })
 
 useHead({

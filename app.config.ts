@@ -7,6 +7,7 @@ export default defineAppConfig({
         // emoji: "https://github.githubassets.com/images/icons/emoji/shipit.png"
         emoji: "/images/status.png"
     },
+    baseUrl:"https://fzdwx.vercel.app/",
     footer: {
         copyRight: "2023 ~ forever | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",
     },
