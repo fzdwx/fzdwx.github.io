@@ -9,9 +9,9 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class=" p-5 mt-2 cursor-default hover:bg-zinc-100 rounded" :id="item.databaseId">
+  <div class="text-base p-3 my-2  cursor-default hover:bg-zinc-100 rounded" :id="item.databaseId">
     <div class="">
-      <div class="flex flex-row mb-2">
+      <div class="flex flex-row">
         <nuxt-img class="w-[40px] h-[40px] mr-2" :src="item.author.avatarUrl" alt="avatar"/>
         <div class="m-center">
           <a :href="item.author.url" class="pname">{{ item.author.login }}</a>
@@ -34,11 +34,11 @@ const props = defineProps<{
 
 .pname{
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(0 0 0 / var(--tw-text-opacity)) !important;
 }
 .purl {
   --tw-text-opacity: 1;
-  color: rgb(120 113 108 / var(--tw-text-opacity));
+  color: rgb(120 113 108 / var(--tw-text-opacity)) !important;
 }
 
 .floor a, .comment a {

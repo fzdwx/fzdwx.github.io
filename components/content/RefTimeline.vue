@@ -4,6 +4,7 @@ import timeline from "~/public/timeline.json";
 
 const props = defineProps<{
   id: number
+  height: any
 }>();
 
 const getTimeline = (id: number) => {
@@ -14,7 +15,7 @@ const getTimeline = (id: number) => {
 </script>
 
 <template>
-  <div>
+  <div :style="height">
     <timeline-comment :item="getTimeline(props.id)" :change-tag="()=>{}"/>
   </div>
 </template>
