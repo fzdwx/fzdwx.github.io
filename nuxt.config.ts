@@ -17,4 +17,9 @@ export default defineNuxtConfig({
     typescript: {
         includeWorkspace: true
     },
+    nitro: {
+        prerender: {
+            routes: ['/sitemap.xml']
+        }
+    }
 })
