@@ -2,12 +2,12 @@
 title: RSS 订阅
 feeds:
   - url: https://manateelazycat.github.io/feed.xml
-    avaver: https://manateelazycat.github.io/favicon.ico
+    avatar: https://manateelazycat.github.io/favicon.ico
   - url: http://feeds.feedburner.com/ruanyifeng
     avatar: http://www.ruanyifeng.com/blog/images/person2_s.jpg
   - url: https://blog.codingnow.com/atom.xml
     avatar: https://blog.codingnow.com/favicon.ico
-  - url: https://www.skyzh.dev/posts/index.xml
+  - url: https://www.skyzh.dev/rss.xml
     avatar: https://www.skyzh.dev/skyzh.jpg
   - url: https://www.manjusaka.blog/atom.xml
     avatar: https://user-images.githubusercontent.com/7054676/56820343-2fe1b580-687e-11e9-8f6f-778df3a8eafd.png
