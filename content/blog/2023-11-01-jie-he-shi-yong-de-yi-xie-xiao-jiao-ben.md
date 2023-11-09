@@ -49,3 +49,11 @@ echo $kube_svc_ip
 ```
 
 use case: `kip | xclip -selection clipborad`
+
+## 5. 进入 pod
+
+```shell
+export kube_log_namespace=$(gum input --placeholder "Please input k8s namespace")
+export kube_log_pod=$(kubectl get pods -n ${kube_log_namespace} | gum filter | awk '{print $1}')
+kubectl exec -ti $kube_log_pod -n $kube_log_namespace -- /bin/bash
+```
