@@ -3,7 +3,7 @@ export default defineAppConfig({
         title: "fzdwx",
         icon: "https://avatars.githubusercontent.com/u/65269574?v=4",
         description: "fzdwx's blog",
-        slogan: "Wandering on the internet.",
+        slogan: "",
         // emoji: "https://github.githubassets.com/images/icons/emoji/shipit.png"
         emoji: "/images/status.png"
     },
