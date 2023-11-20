@@ -18,6 +18,7 @@ feeds:
   - url: https://blog.j2gg0s.com/feed.xml
   - url: http://blog.mrcroxx.com/index.xml
   - url: https://tech.qimao.com/rss/
+  - url: https://www.zenlife.tk/feed.atom
 ---
 
 empty
