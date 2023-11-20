@@ -45,13 +45,8 @@ useHead({
       href: "https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-webfont/1.7.0/style.css"
     }
   ],
-})
-
-</script>
-
-<template>
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
+  script: [{innerHTML: `
+   (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () {
         (c[a].q = c[a].q || []).push(arguments)
       };
@@ -61,7 +56,12 @@ useHead({
       y = l.getElementsByTagName(r)[0];
       y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "jtbd7f26tx");
-  </script>
+  `}]
+})
+
+</script>
+
+<template>
 
   <Body autofocus>
   <main class="container lg:px-0 md:pb-20 md:px-8 sm:pb-16 sm:px-6 mx-auto px-7 py-10 pb-10 pt-24 l">
