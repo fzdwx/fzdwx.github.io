@@ -3,13 +3,13 @@ export default defineAppConfig({
         title: "fzdwx",
         icon: "https://avatars.githubusercontent.com/u/65269574?v=4",
         description: "fzdwx's blog",
-        slogan: "",
+        slogan: "这个人很懒，什么都没带走",
         // emoji: "https://github.githubassets.com/images/icons/emoji/shipit.png"
         emoji: "/images/status.png"
     },
     baseUrl:"https://fzdwx.vercel.app/",
     footer: {
-        copyRight: "2023 ~ forever | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",
+        copyRight: "2023 | <a class='text-just-dark' href='https://github.com/fzdwx' target='_blank'>fzdwx</a> All Rights Reserved.",
     },
     github: {
         owner: "fzdwx",
