@@ -19,6 +19,7 @@ feeds:
   - url: http://blog.mrcroxx.com/index.xml
   - url: https://tech.qimao.com/rss/
   - url: https://www.zenlife.tk/feed.atom
+  - url: https://ttalk.im/feeds/all.rss.xml
 ---
 
 empty
