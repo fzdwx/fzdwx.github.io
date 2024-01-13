@@ -1,7 +1,7 @@
 <template>
   <div class="m-center">
     <div class="m-con">
-      <articles-list path="/blog" show-cmdk/>
+      <articles-list path="/blog"/>
     </div>
   </div>
 </template>

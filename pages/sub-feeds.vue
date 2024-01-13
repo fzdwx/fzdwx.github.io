@@ -54,16 +54,6 @@
       </content-doc>
     </div>
   </div>
-
-  <cmdk placeholder="">
-    <!--    <Command.Group heading="Tgas">-->
-    <!--      <Command.Item v-for="tag in tags" :data-value="tag"-->
-    <!--                    @select="changeTag(tag)"-->
-    <!--      >-->
-    <!--        {{ tag }}-->
-    <!--      </Command.Item>-->
-    <!--    </Command.Group>-->
-  </cmdk>
 </template>
 <script setup lang="ts">
 import {FeedsItem} from "~/types";

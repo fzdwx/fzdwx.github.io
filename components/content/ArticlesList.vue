@@ -15,10 +15,6 @@ const props = defineProps({
   showTagList: {
     type: Boolean,
     default: true
-  },
-  showCmdk: {
-    type: Boolean,
-    default: false,
   }
 })
 
@@ -92,17 +88,5 @@ initTag()
         <articles-list-item :article="post" class="hover:bg-zinc-100 p-2"/>
       </div>
     </div>
-  </div>
-
-  <div v-if="showCmdk">
-    <cmdk>
-      <Command.Group heading="Tgas">
-        <Command.Item v-for="tag in tags" :data-value="tag"
-                      @select="changeTag(tag)"
-        >
-          {{ tag }}
-        </Command.Item>
-      </Command.Group>
-    </cmdk>
   </div>
 </template>

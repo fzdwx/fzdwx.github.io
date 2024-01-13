@@ -1,31 +1,44 @@
 <script lang="ts" setup>
 const config = useAppConfig();
-const { show } = useCmdkVisable();
 </script>
 
 <template>
   <div class="m-center text-sm">
     <div class="m-con px-6">
+
+      <div class="m-center pt-5 mt-5 px-10">
+        <div
+            class="px-3 cursor-default"
+            v-for="item in config.links">
+          <a
+              :href="item.url"
+              target="_self"
+              class="cursor-default hover:text-just-light">
+            {{ item.title }}
+          </a>
+        </div>
+      </div>
+
       <div
-        class="hidden m-center items-center px-5 space-x-6 sm:space-x-8 w-full"
+          class="hidden m-center items-center px-5 space-x-6 sm:space-x-8 w-full"
       >
         <nuxt-link to="/" class="cursor-default" title="Go Home">
           <div>
             <nuxt-img
-              v-if="config.header.icon"
-              :src="config.header.icon"
-              :alt="config.header.title"
-              width="180"
-              height="180"
-              class="rounded-full object-cover overflow-hidden"
+                v-if="config.header.icon"
+                :src="config.header.icon"
+                :alt="config.header.title"
+                width="180"
+                height="180"
+                class="rounded-full object-cover overflow-hidden"
             />
             <div class="relative">
               <div
-                class="absolute bottom-5 left-[80%] inline-block p-2 w-[40px] h-[40px] bg-white rounded-full shadow-xl"
+                  class="absolute bottom-5 left-[80%] inline-block p-2 w-[40px] h-[40px] bg-white rounded-full shadow-xl"
               >
                 <nuxt-img
-                  class="m-0 justify-between h-[24px]"
-                  :src="config.header.emoji"
+                    class="m-0 justify-between h-[24px]"
+                    :src="config.header.emoji"
                 />
               </div>
             </div>
@@ -34,8 +47,8 @@ const { show } = useCmdkVisable();
 
         <div class="flex-1 min-w-0 relative space-y-2 sm:space-y-3">
           <div
-            aria-label="title"
-            class="invisible sm:visible logo-title text-xl sm:text-2xl text-just-dark"
+              aria-label="title"
+              class="invisible sm:visible logo-title text-xl sm:text-2xl text-just-dark"
           >
             {{ config.header.title }}
           </div>
@@ -43,32 +56,18 @@ const { show } = useCmdkVisable();
             {{ config.header.slogan }}
           </div>
           <div
-            class="absolute right-20 -bottom-20 sm:bottom-0 pb-3 sm:pb-0 sm:right-0 sm:relative flex sm:flex-row text-xl space-x-2 sm:space-y-0 sm:space-x-2.5"
+              class="absolute right-20 -bottom-20 sm:bottom-0 pb-3 sm:pb-0 sm:right-0 sm:relative flex sm:flex-row text-xl space-x-2 sm:space-y-0 sm:space-x-2.5"
           >
-            <Github name="fzdwx" />
-            <Email email="likelovec@gmail.com" />
-            <span
-              class="pt-0.5 text-base cursor-pointer"
-              @click="
-                () => {
-                  show();
-                }
-              "
-            >
-              ⌘
-            </span>
+            <Github name="fzdwx"/>
+            <Email email="likelovec@gmail.com"/>
           </div>
         </div>
       </div>
 
       <div class="m-center main-font pt-10">
-        <articles-list :showCd="false" :show-tag-list="false" path="/blog" />
+        <articles-list :showCd="false" :show-tag-list="false" path="/blog"/>
       </div>
     </div>
-  </div>
-
-  <div class="w-full mx-auto">
-    <cmdk placeholder="Jump to" default-visible> </cmdk>
   </div>
 </template>
 

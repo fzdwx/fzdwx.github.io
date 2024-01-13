@@ -38,18 +38,6 @@ const changeTag = (tag: string) => {
 </script>
 
 <template>
-  <div class="w-full mx-auto">
-    <cmdk placeholder="Filter tags">
-      <Command.Group heading="Tgas">
-        <Command.Item v-for="tag in allTags" :data-value="tag"
-                      @select="changeTag(tag)"
-        >
-          {{ tag }}
-        </Command.Item>
-      </Command.Group>
-    </cmdk>
-  </div>
-
   <div class="m-center timeline">
     <div class="m-con">
       <div class="floor mb-5" ref="floor" v-html="timeline.bodyHTML"/>
