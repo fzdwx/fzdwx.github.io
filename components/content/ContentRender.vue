@@ -2,7 +2,7 @@
   <ContentRenderer
       class="doc prose
                         max-w-none
-                        text-black/90 text-[20px] leading-[1.8]
+                        text-black/90 text-[20px] leading-[24px]
                         prose-pre:text-codetext prose-code:text-sm
                         prose-pre:bg-zinc-300/25
                         prose-pre:my-0
