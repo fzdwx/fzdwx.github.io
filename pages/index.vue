@@ -5,20 +5,6 @@ const config = useAppConfig();
 <template>
   <div class="m-center text-sm">
     <div class="m-con px-6">
-
-      <div class="m-center pt-5 mt-5 px-10">
-        <div
-            class="px-3 cursor-default"
-            v-for="item in config.links">
-          <a
-              :href="item.url"
-              target="_self"
-              class="cursor-default hover:text-just-light">
-            {{ item.title }}
-          </a>
-        </div>
-      </div>
-
       <div
           class="hidden m-center items-center px-5 space-x-6 sm:space-x-8 w-full"
       >
