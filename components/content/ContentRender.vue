@@ -1,14 +1,14 @@
 <template>
   <ContentRenderer
-      class="doc prose prose-xl
+      class="doc prose
                         max-w-none
-                        text-black/90
+                        text-black/90 text-[20px] leading-[1.8]
                         prose-pre:text-codetext prose-code:text-sm
                         prose-pre:bg-zinc-300/25
                         prose-pre:my-0
                         prose-hr:my-5 prose-hr:border-t-just-light
-                        prose-p:my-2 prose-li:my-2 prose-ul:my-2
-                        prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-h5:text-lg prose-h6:text-base
+                        prose-p:my-2
+                        prose-li:my-2 prose-ul:my-2
                         prose-a:no-underline prose-a:text-just hover:prose-a:text-just-dark
                         prose-blockquote:border-l-[3px] prose-blockquote:border-l-just-lighter
                         prose-code:after:content-none prose-code:before:content-none

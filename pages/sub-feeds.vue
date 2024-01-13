@@ -3,44 +3,45 @@
     <div class="m-con">
       <content-doc v-slot="{ doc }">
         <div class="pb-5">
-          <cd />
+          <cd/>
         </div>
         <header class="pb-5">
           <h1 class="text-3xl">{{ doc.title }}</h1>
         </header>
 
-        <span
-          :key="tag"
-          class="mx-1 text-lg rounded py-[0.2rem] px-[0.3rem] cursor-pointer whitespace-nowrap"
-          :class="{
-            'bg-just-light/20 text-just-dark': tag === state.currentName,
-          }"
-          @click="collectItemInfo(tag)"
-          v-if="state.names"
-          v-for="(tag, idx) in state.names"
-        >
-          {{ tag }}
-        </span>
+        <div>
+          <div class='cursor-default inline-block px-2 py-1 max-w-200px'
+               :class="{
+                  'bg-just-light/20 text-just-dark': tag === state.currentName,
+                }"
+               :key="tag"
+               @click="collectItemInfo(tag)"
+               v-if="state.names"
+               v-for="(tag, idx) in state.names"
+          >
+            <span class="overflow-clip line-clamp-1">{{ tag }}</span>
+          </div>
+        </div>
 
         <div class="pt-5 text-lg" v-for="year in state.years">
           <header class="pb-2">
             <h1 class="text-2xl">{{ year }}年</h1>
           </header>
           <div
-            class="pl-2 md:pl-4 flex"
-            v-for="item in state.itemsByYear[year]"
+              class="pl-2 md:pl-4 flex"
+              v-for="item in state.itemsByYear[year]"
           >
             <div
-              class="basis-1/6 text-hidden line-clamp-1"
-              :aria-label="item.time"
+                class="basis-1/6 text-hidden line-clamp-1"
+                :aria-label="item.time"
             >
               {{ formatDate(item.time) }}
             </div>
             <div class="basis-4/6 text-hidden line-clamp-1">
               <a
-                class="hover:bg-just-light/20 hover:text-just-dark"
-                :href="item.url"
-                target="_blank"
+                  class="cursor-default hover:bg-just-light/20 hover:text-just-dark"
+                  :href="item.url"
+                  target="_self"
               >
                 {{ item.title }}
               </a>
@@ -65,10 +66,10 @@
   </cmdk>
 </template>
 <script setup lang="ts">
-import { FeedsItem } from "~/types";
+import {FeedsItem} from "~/types";
 import dayjs from "dayjs";
 import links from "~/public/links.json";
-import { Command } from "vue-command-palette";
+import {Command} from "vue-command-palette";
 
 onMounted(() => {
   initGroup();
