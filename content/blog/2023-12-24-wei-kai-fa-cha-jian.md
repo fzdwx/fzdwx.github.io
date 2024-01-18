@@ -4,10 +4,8 @@ date: 2023-12-24 10:07:03
 tags: [ launcher ]
 ---
 
-[launcher](https://github.com/fzdwx/launcher) 是我开发的一款开源的 Application launcher,
-目前只支持 linux 系统(我现在只用 linux).
-
-它的扩展机制是通过 Electron 中的 BrowserView 来实现的:
+[launcher](https://github.com/fzdwx/launcher) 是我开发的一款开源的 Application launcher, 目前只支持 linux 系统(我现在只用
+linux). 它的扩展机制是通过 Electron 中的 BrowserView 来实现的:
 
 1. 当你需要加载一个扩展时, 主窗口会挂载一个 BrowserView
 2. 调用 `view.loadUrl($backendUrl?ext=path/to/your/extension)`

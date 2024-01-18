@@ -3,9 +3,9 @@
       class="doc prose
                         max-w-none
                         text-black/90 text-[20px] leading-[24px]
-                        prose-pre:text-codetext prose-code:text-sm
-                        prose-pre:bg-zinc-300/25
-                        prose-pre:my-0
+                        prose-code:text-[15px] prose-code:leading-[24px]
+                        prose-pre:bg-zinc-300/25 prose-pre:text-codetext
+                        prose-pre:my-5
                         prose-hr:my-5 prose-hr:border-t-just-light
                         prose-p:my-2
                         prose-li:my-2 prose-ul:my-2

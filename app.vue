@@ -56,7 +56,8 @@ useHead({
     <div
         class="px-3 cursor-default"
         v-for="item in config.links">
-      <NuxtLink :to='item.url' class="hover:text-just-dark cursor-default p-1" activeClass="text-just-dark bg-just-light/10 rounded">
+      <NuxtLink :to='item.url' class="hover:text-just-dark cursor-default p-1"
+                activeClass="text-just-dark bg-just-light/10 rounded">
         {{ item.title }}
       </NuxtLink>
     </div>
