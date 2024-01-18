@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {withTrailingSlash} from 'ufo';
 import {Post} from "~/types"
-import {Command} from 'vue-command-palette'
 
 const props = defineProps({
   path: {

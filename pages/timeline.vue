@@ -2,8 +2,6 @@
 
 import timeline from "~/public/timeline.json"
 
-import {Command} from 'vue-command-palette'
-
 const comments = ref(timeline.comments.nodes)
 const currentTag = ref('')
 

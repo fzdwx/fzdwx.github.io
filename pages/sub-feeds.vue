@@ -59,7 +59,6 @@
 import {FeedsItem} from "~/types";
 import dayjs from "dayjs";
 import links from "~/public/links.json";
-import {Command} from "vue-command-palette";
 
 onMounted(() => {
   initGroup();
