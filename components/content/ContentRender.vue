@@ -2,8 +2,8 @@
   <ContentRenderer
       class="doc prose
                         max-w-none
-                        text-black/90 text-[20px] leading-[24px]
-                        prose-code:text-[15px] prose-code:leading-[24px]
+                        text-black/90 text-[20px] leading-[30px]
+                        prose-code:text-[14px] prose-code:leading-[24px]
                         prose-pre:bg-zinc-300/25 prose-pre:text-codetext
                         prose-pre:my-5
                         prose-hr:my-5 prose-hr:border-t-just-light
