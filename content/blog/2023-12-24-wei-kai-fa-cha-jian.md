@@ -86,12 +86,12 @@ tags: [ launcher ]
 2. 调用 `view.loadUrl($backendUrl?ext=path/to/your/extension)`
 3. 这会请求到 launcher 的后端, 后端根据 ext 指定的 extension 路径, 来加载对应的 extension 下的 dist 目录
 
-相关代码实现: [electron/api.ts](https://github.com/fzdwx/launcher/blob/e40d4422c9c8bdbe177dc5664f24a33970dcc148/electron/api.ts#L43)
-以及 [launcher-native/extension.go](https://github.com/fzdwx/launcher/blob/fee466993f89a7027955bee4b64a751abb6705cd/launcher-native/extension.go#L11)
+相关代码实现: [electron/api.ts](https://github.com/fzdwx/yakuza/blob/e40d4422c9c8bdbe177dc5664f24a33970dcc148/electron/api.ts#L43)
+以及 [launcher-native/extension.go](https://github.com/fzdwx/yakuza/blob/fee466993f89a7027955bee4b64a751abb6705cd/launcher-native/extension.go#L11)
 
 ### 0x00 从模板开始
 
-进入 [launcher-extension-sample](https://github.com/fzdwx/yakuza-extension-template-react) 项目, 点击 Use this template,
+进入 [yakuza-extension-template-react](https://github.com/fzdwx/yakuza-extension-template-react) 项目, 点击 Use this template,
 生成一个新的项目.
 
 ![img](/images/img_16.png)
