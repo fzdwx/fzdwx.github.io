@@ -3,12 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/fzdwx/infinite"
-	"github.com/fzdwx/infinite/components/input/text"
-	"github.com/mmcdole/gofeed"
-	"github.com/mozillazg/go-pinyin"
-	"github.com/spf13/cobra"
-	"gopkg.in/yaml.v3"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -17,6 +11,13 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/fzdwx/infinite"
+	"github.com/fzdwx/infinite/components/input/text"
+	"github.com/mmcdole/gofeed"
+	"github.com/mozillazg/go-pinyin"
+	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
 )
 
 var (
