@@ -1,16 +1,15 @@
 ---
-title: 为 launcher 开发扩展
+title: 为 Yakuza 开发扩展
 date: 2023-12-24 10:07:03
 tags: [ launcher ]
 ---
 
-[launcher](https://github.com/fzdwx/launcher) 是我开发的一款开源的 Application launcher,
-目前只支持 linux 系统(我现在只用 linux).
+[yakuza](https://github.com/fzdwx/yakuza) 是一个应用启动器软件(类似 rofi), 目前只支持 linux 系统(我现在只用 linux).
 
 它的扩展机制是通过 Electron 中的 BrowserView 来实现的:
 
 1. 当你需要加载一个扩展时, 主窗口会挂载一个 BrowserView
-2. 调用 `view.loadUrl($backendUrl?ext=path/to/your/extension)`
+2. 调用 `view.loadUrl($backendUrl?ext=/path/to/your/extension)`
 3. 这会请求到 launcher 的后端, 后端根据 ext 指定的 extension 路径, 来加载对应的 extension 下的 dist 目录
 
 相关代码实现: [electron/api.ts](https://github.com/fzdwx/launcher/blob/e40d4422c9c8bdbe177dc5664f24a33970dcc148/electron/api.ts#L43)
@@ -91,7 +90,8 @@ tags: [ launcher ]
 
 ### 0x00 从模板开始
 
-进入 [yakuza-extension-template-react](https://github.com/fzdwx/yakuza-extension-template-react) 项目, 点击 Use this template,
+进入 [yakuza-extension-template-react](https://github.com/fzdwx/yakuza-extension-template-react) 项目, 点击 Use this
+template,
 生成一个新的项目.
 
 ![img](/images/img_16.png)
