@@ -7,7 +7,7 @@
                         prose-pre:bg-zinc-300/25 prose-pre:text-codetext
                         prose-pre:my-5
                         prose-hr:my-5 prose-hr:border-t-just-light
-                        prose-p:my-2
+                        prose-p:my-4
                         prose-li:my-2 prose-ul:my-2
                         prose-a:no-underline prose-a:text-just hover:prose-a:text-just-dark
                         prose-blockquote:border-l-[3px] prose-blockquote:border-l-just-lighter
