@@ -52,17 +52,18 @@ useHead({
 <template>
 
   <Body autofocus>
-  <div class="flex right-0 absolute pt-5 mt-5 px-10">
-    <div
-        class="px-3 cursor-default"
-        v-for="item in config.links">
-      <NuxtLink :to='item.url' class="hover:text-just-dark cursor-default p-1"
-                activeClass="text-just-dark bg-just-light/10 rounded">
-        {{ item.title }}
-      </NuxtLink>
+  <div class="flex pt-5 ">
+    <div class="m-auto flex">
+      <div class="px-5 cursor-default"
+           v-for="item in config.links">
+        <NuxtLink :to='item.url' class="hover:text-just-dark cursor-default p-1"
+                  activeClass="text-just-dark bg-just-light/10 rounded">
+          {{ item.title }}
+        </NuxtLink>
+      </div>
     </div>
   </div>
-  <main class="container lg:px-0 md:pb-20 md:px-8 sm:pb-16 sm:px-6 mx-auto px-7 py-10 pb-10 pt-24 l">
+  <main class="container mx-auto px-7 pb-10 sm:pt-24">
     <NuxtPage transition/>
   </main>
   <footer class="px-5 sm:px-7 md:px-10 my-5  text-center">

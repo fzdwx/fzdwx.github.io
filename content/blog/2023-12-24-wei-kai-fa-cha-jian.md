@@ -70,11 +70,7 @@ pnpm run dev
 ```
 
 其中 `name`, `description`, `author`, `icon`, `github` 是必填的,
-`actions` 是可选的---
-title: 为 Yakuza 开发扩展
-date: 2023-12-24 10:07:03
-tags: [ launcher ]
----
+`actions` 是可选的
 
 [yakuza](https://github.com/fzdwx/yakuza) 是我开发的一款开源的 Application launcher,
 目前只支持 linux 系统(我现在只用 linux).

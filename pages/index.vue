@@ -6,7 +6,7 @@ const config = useAppConfig();
   <div class="m-center text-sm">
     <div class="m-con px-6">
       <div
-          class="hidden m-center items-center px-5 space-x-6 sm:space-x-8 w-full"
+          class="m-center px-5 space-x-4 sm:space-x-8 w-full"
       >
         <nuxt-link to="/" class="cursor-default" title="Go Home">
           <div>
@@ -42,7 +42,7 @@ const config = useAppConfig();
             {{ config.header.slogan }}
           </div>
           <div
-              class="absolute right-20 -bottom-20 sm:bottom-0 pb-3 sm:pb-0 sm:right-0 sm:relative flex sm:flex-row text-xl space-x-2 sm:space-y-0 sm:space-x-2.5"
+              class="absolute right-20 sm:bottom-0 invisible sm:visible pb-3 sm:pb-0 sm:right-0 sm:relative flex sm:flex-row text-xl space-x-2 sm:space-y-0 sm:space-x-2.5"
           >
             <Github name="fzdwx"/>
             <Email email="likelovec@gmail.com"/>
@@ -50,7 +50,7 @@ const config = useAppConfig();
         </div>
       </div>
 
-      <div class="m-center main-font pt-10">
+      <div class="m-center main-font sm:pt-10">
         <articles-list :showCd="false" :show-tag-list="false" path="/blog"/>
       </div>
     </div>

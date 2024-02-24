@@ -68,7 +68,7 @@ initTag()
 </script>
 
 <template>
-  <div v-if="showCd" class="pb-10">
+  <div v-if="showCd" class="py-10">
     <cd/>
   </div>
   <div v-if="showTagList" class="break-all pb-10">
