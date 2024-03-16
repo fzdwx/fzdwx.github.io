@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/fzdwx/infinite/components"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -81,19 +82,27 @@ tags: [{{Tags}}]
 		Use:   "new",
 		Short: "新建博客",
 		Run: func(_ *cobra.Command, args []string) {
-			blogName, err := infinite.NewText(
+			tm1 := infinite.NewText(
 				text.WithPrompt("请输入博客名"),
 				text.WithRequired(),
 				text.WithRequiredMsg("博客名不能为空"),
-			).Display()
+			)
+			blogName, err := tm1.Display()
 			if err != nil {
 				perr("new content", err)
 				return
 			}
+			if tm1.Status() == components.Quit {
+				return
+			}
 
-			tags, err := infinite.NewText(text.WithPrompt("请输入标签(多个使用空格隔开)")).Display()
+			tm2 := infinite.NewText(text.WithPrompt("请输入标签(多个使用空格隔开)"))
+			tags, err := tm2.Display()
 			if err != nil {
 				perr("new content", err)
+				return
+			}
+			if tm2.Status() == components.Quit {
 				return
 			}
 
