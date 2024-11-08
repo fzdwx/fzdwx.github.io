@@ -5,6 +5,10 @@ tags: [ go ]
 ---
 
 ```go
+var (
+    dialer = &net.Dialer{}
+)
+
 type DnsOverride struct {
 	Domain string `json:"domain"`
 	Ip     string `json:"ip"`
