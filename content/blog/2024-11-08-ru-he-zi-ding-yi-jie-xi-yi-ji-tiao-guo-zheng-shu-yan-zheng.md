@@ -14,14 +14,9 @@ type DnsOverride struct {
 	Ip     string `json:"ip"`
 }
 
-func newTr(overrides []DnsOverride, skipTlsVerify int) *http.Transport {
-	skip := false
-	if skipTlsVerify == 1 {
-		skip = true
-	}
-
+func newTr(overrides []DnsOverride, skipTlsVerify bool) *http.Transport {
 	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: skip},
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: skipTlsVerify},
 	}
 	if len(overrides) == 0 {
 		return tr
