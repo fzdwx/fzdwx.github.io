@@ -15,7 +15,6 @@ feeds:
     avatar: https://avatars.githubusercontent.com/u/8736212?v=4
   - url: https://linux-china.davao.page/rss.xml
     avatar: https://avatars.githubusercontent.com/u/46711?v=4
-  - url: https://blog.j2gg0s.com/feed.xml
   - url: http://blog.mrcroxx.com/index.xml
   - url: https://tech.qimao.com/rss/
   - url: https://www.supertechfans.com/cn/index.xml
